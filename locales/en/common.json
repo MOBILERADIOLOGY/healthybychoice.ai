@@ -10,12 +10,12 @@
     "contact": "Contact"
   },
   "hero": {
-    "badge": "Science-Backed Gut Health",
+    "badge": "AI-Powered Gut Health",
     "title": "Discover How Your Gut Health Impacts Your",
-    "titleHighlight": "Weight",
-    "subtitle": "Take our free 3-minute assessment and get personalized recommendations to optimize your microbiome for lasting results.",
-    "cta": "Start Your Free Assessment",
-    "ctaNote": "No credit card required • Results in 3 minutes",
+    "titleHighlight": "Overall Wellbeing",
+    "subtitle": "Share your health concerns with our AI wellness guide and receive a personalized plan to restore and support your gut health.",
+    "cta": "Talk to Our AI Guide",
+    "ctaNote": "Free personalized assessment • No credit card required",
     "trusted": "Trusted by over 50,000+ health-conscious individuals"
   },
   "features": {

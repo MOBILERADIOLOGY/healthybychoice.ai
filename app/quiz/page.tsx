@@ -38,22 +38,92 @@ interface FinalAnalysis {
 export default function QuizPage() {
   const { t, locale } = useLanguage()
   const router = useRouter()
+  
+  // New: Opening conversation state
+  const [quizPhase, setQuizPhase] = useState<'welcome' | 'concern' | 'questions' | 'analyzing' | 'results'>('welcome')
+  const [chiefConcern, setChiefConcern] = useState('')
+  const [aiWelcomeMessage, setAiWelcomeMessage] = useState('')
+  const [aiConcernResponse, setAiConcernResponse] = useState('')
+  const [isAiTyping, setIsAiTyping] = useState(false)
+  
+  // Quiz state
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [aiResponse, setAiResponse] = useState<string>('')
-  const [isAiTyping, setIsAiTyping] = useState(false)
   const [showAiResponse, setShowAiResponse] = useState(false)
-  const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [finalAnalysis, setFinalAnalysis] = useState<FinalAnalysis | null>(null)
   const [score, setScore] = useState(0)
   const chatEndRef = useRef<HTMLDivElement>(null)
 
-  // Scroll to bottom when AI responds
+  // Welcome message on mount
   useEffect(() => {
-    if (showAiResponse || isAiTyping) {
-      chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const welcomeEn = "Hi there! 👋 I'm your personal gut health guide. I'm here to help you understand how your gut health might be affecting how you feel every day. Before we dive into the assessment, I'd love to know what brought you here today."
+    const welcomeEs = "¡Hola! 👋 Soy tu guía personal de salud intestinal. Estoy aquí para ayudarte a entender cómo tu salud intestinal puede estar afectando cómo te sientes cada día. Antes de comenzar la evaluación, me encantaría saber qué te trajo aquí hoy."
+    
+    const welcome = locale === 'es' ? welcomeEs : welcomeEn
+    typeMessage(welcome, setAiWelcomeMessage).then(() => {
+      setQuizPhase('concern')
+    })
+  }, [locale])
+
+  // Scroll to bottom
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [aiWelcomeMessage, aiConcernResponse, showAiResponse, aiResponse, quizPhase])
+
+  const typeMessage = (text: string, setter: (value: string) => void): Promise<void> => {
+    return new Promise((resolve) => {
+      setIsAiTyping(true)
+      let i = 0
+      setter('')
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          setter(prev => prev + text.charAt(i))
+          i++
+        } else {
+          clearInterval(interval)
+          setIsAiTyping(false)
+          resolve()
+        }
+      }, 25)
+    })
+  }
+
+  const handleConcernSubmit = async () => {
+    if (!chiefConcern.trim()) return
+    
+    setIsAiTyping(true)
+    
+    try {
+      const response = await fetch('/api/quiz-interaction', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'concern_response',
+          concern: chiefConcern,
+          locale
+        }),
+      })
+      const data = await response.json()
+      
+      if (data.success && data.response) {
+        await typeMessage(data.response, setAiConcernResponse)
+      } else {
+        const fallbackEn = `Thank you for sharing that with me. ${chiefConcern.toLowerCase().includes('weight') ? 'Weight management' : chiefConcern.toLowerCase().includes('energy') ? 'Energy levels' : chiefConcern.toLowerCase().includes('skin') ? 'Skin health' : chiefConcern.toLowerCase().includes('digest') ? 'Digestive comfort' : 'Your wellbeing'} is deeply connected to gut health, and I'm confident we can help. Let's explore a few questions to create your personalized plan.`
+        const fallbackEs = `Gracias por compartir eso conmigo. ${chiefConcern.toLowerCase().includes('peso') ? 'El control del peso' : chiefConcern.toLowerCase().includes('energía') ? 'Los niveles de energía' : chiefConcern.toLowerCase().includes('piel') ? 'La salud de la piel' : chiefConcern.toLowerCase().includes('digest') ? 'La comodidad digestiva' : 'Tu bienestar'} está profundamente conectado con la salud intestinal, y estoy seguro de que podemos ayudar. Exploremos algunas preguntas para crear tu plan personalizado.`
+        await typeMessage(locale === 'es' ? fallbackEs : fallbackEn, setAiConcernResponse)
+      }
+    } catch (error) {
+      const fallbackEn = "Thank you for sharing that with me. I can see this is important to you, and I want you to know that gut health plays a huge role in how we feel overall. Let's explore a few questions together to understand your situation better and create a personalized plan just for you."
+      const fallbackEs = "Gracias por compartir eso conmigo. Puedo ver que esto es importante para ti, y quiero que sepas que la salud intestinal juega un papel enorme en cómo nos sentimos en general. Exploremos algunas preguntas juntos para entender mejor tu situación y crear un plan personalizado solo para ti."
+      await typeMessage(locale === 'es' ? fallbackEs : fallbackEn, setAiConcernResponse)
     }
-  }, [showAiResponse, isAiTyping, aiResponse])
+    
+    // Wait a moment then transition to questions
+    setTimeout(() => {
+      setQuizPhase('questions')
+    }, 2000)
+  }
 
   const calculateScore = (currentAnswers: Record<string, string>) => {
     let s = 50
@@ -88,36 +158,25 @@ export default function QuizPage() {
           questionKey,
           answer: t(`quiz.questions.${questionKey}.options.${answer}`),
           answers: allAnswers,
+          chiefConcern,
           locale
         }),
       })
       const data = await response.json()
       
       if (data.success) {
-        // Simulate typing effect
-        const text = data.response
-        let i = 0
-        setAiResponse('')
-        const typeInterval = setInterval(() => {
-          if (i < text.length) {
-            setAiResponse(prev => prev + text.charAt(i))
-            i++
-          } else {
-            clearInterval(typeInterval)
-            setIsAiTyping(false)
-          }
-        }, 20)
+        await typeMessage(data.response, setAiResponse)
       }
     } catch (error) {
-      setAiResponse(locale === 'es' 
-        ? '¡Entendido! Continuemos con tu evaluación.' 
-        : 'Got it! Let\'s continue with your assessment.')
-      setIsAiTyping(false)
+      const fallback = locale === 'es' 
+        ? '¡Entendido! Esto me ayuda a crear un mejor plan para ti.' 
+        : 'Got it! This helps me create a better plan for you.'
+      await typeMessage(fallback, setAiResponse)
     }
   }
 
   const getFinalAnalysis = async (allAnswers: Record<string, string>, calculatedScore: number) => {
-    setIsAnalyzing(true)
+    setQuizPhase('analyzing')
     
     try {
       const response = await fetch('/api/quiz-interaction', {
@@ -126,6 +185,7 @@ export default function QuizPage() {
         body: JSON.stringify({
           type: 'final_analysis',
           answers: allAnswers,
+          chiefConcern,
           score: calculatedScore,
           locale
         }),
@@ -134,13 +194,13 @@ export default function QuizPage() {
       
       if (data.success) {
         setFinalAnalysis(data.analysis)
+        setQuizPhase('results')
       }
     } catch (error) {
-      // Fallback analysis
       setFinalAnalysis({
         greeting: locale === 'es'
-          ? `¡Completaste tu evaluación! Basándonos en tu meta de ${t(`goals.${allAnswers.goal}`)}, tenemos información valiosa para ti.`
-          : `You've completed your assessment! Based on your goal of ${t(`goals.${allAnswers.goal}`)}, we have valuable insights for you.`,
+          ? `¡Completaste tu evaluación! Basándonos en tu preocupación sobre "${chiefConcern}", tenemos información valiosa para ti.`
+          : `You've completed your assessment! Based on your concern about "${chiefConcern}", we have valuable insights for you.`,
         insights: [
           {
             title: locale === 'es' ? 'Tu Perfil Único' : 'Your Unique Profile',
@@ -158,8 +218,8 @@ export default function QuizPage() {
           : 'With the right strategies, you can see significant improvements!',
         improvementPotential: 'high'
       })
+      setQuizPhase('results')
     }
-    setIsAnalyzing(false)
   }
 
   const handleAnswer = async (value: string) => {
@@ -167,21 +227,19 @@ export default function QuizPage() {
     const newAnswers = { ...answers, [questionKey]: value }
     setAnswers(newAnswers)
 
-    // Get AI response for this answer
     await getAIResponse(questionKey, value, newAnswers)
 
-    // Wait a moment then move to next question or finish
     setTimeout(() => {
       if (currentQuestion < questionKeys.length - 1) {
         setShowAiResponse(false)
         setAiResponse('')
         setCurrentQuestion(currentQuestion + 1)
       } else {
-        // Quiz complete - calculate score and get final analysis
         const calculatedScore = calculateScore(newAnswers)
         setScore(calculatedScore)
         localStorage.setItem('quizAnswers', JSON.stringify(newAnswers))
         localStorage.setItem('quizScore', String(calculatedScore))
+        localStorage.setItem('chiefConcern', chiefConcern)
         getFinalAnalysis(newAnswers, calculatedScore)
       }
     }, 2000)
@@ -202,9 +260,9 @@ export default function QuizPage() {
   const progress = ((currentQuestion + 1) / questionKeys.length) * 100
   const currentKey = questionKeys[currentQuestion]
 
-  // Final Analysis View (after quiz completion)
-  if (finalAnalysis) {
-    const scoreColor = score >= 70 ? 'from-green-400 to-green-500' : score >= 50 ? 'from-amber-400 to-amber-500' : 'from-red-400 to-red-500'
+  // Results View
+  if (quizPhase === 'results' && finalAnalysis) {
+    const scoreColor = score >= 70 ? 'from-emerald-400 to-green-500' : score >= 50 ? 'from-amber-400 to-orange-500' : 'from-red-400 to-rose-500'
     const scoreLabel = score >= 70 
       ? (locale === 'es' ? 'Bueno' : 'Good') 
       : score >= 50 
@@ -212,12 +270,12 @@ export default function QuizPage() {
         : (locale === 'es' ? 'Necesita Atención' : 'Needs Attention')
 
     return (
-      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50">
-        <nav className="bg-white/80 backdrop-blur-md border-b border-slate-100">
+      <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+        <nav className="bg-white/80 backdrop-blur-md border-b border-emerald-100">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-between h-16 md:h-20">
               <Link href="/" className="flex items-center gap-2">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-500/30">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                   <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                   </svg>
@@ -230,13 +288,12 @@ export default function QuizPage() {
         </nav>
 
         <div className="max-w-2xl mx-auto px-6 py-12">
-          {/* Score Reveal */}
           <div className="text-center mb-8 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-teal-100 to-teal-200 text-teal-700 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-700 rounded-full text-sm font-semibold mb-6">
               ✨ {locale === 'es' ? '¡Evaluación Completa!' : 'Assessment Complete!'}
             </div>
             
-            <div className="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 mb-8">
+            <div className="bg-white rounded-2xl shadow-lg border border-emerald-100 p-8 mb-8">
               <h2 className="text-lg text-slate-500 mb-4">
                 {locale === 'es' ? 'Tu Puntuación de Microbioma' : 'Your Microbiome Score'}
               </h2>
@@ -247,27 +304,22 @@ export default function QuizPage() {
                 {scoreLabel}
               </div>
               <div className="mt-6 h-4 bg-slate-100 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-red-400 via-amber-400 to-green-400 transition-all duration-1000" 
-                  style={{ width: `${score}%` }}
-                ></div>
+                <div className="h-full bg-gradient-to-r from-red-400 via-amber-400 to-emerald-400 transition-all duration-1000" style={{ width: `${score}%` }}></div>
               </div>
             </div>
           </div>
 
-          {/* AI Analysis Chat Bubble */}
           <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
                 <span className="text-lg">🤖</span>
               </div>
-              <div className="flex-1 bg-white rounded-2xl rounded-tl-none p-6 shadow-sm border border-slate-100">
+              <div className="flex-1 bg-white rounded-2xl rounded-tl-none p-6 shadow-sm border border-emerald-100">
                 <p className="text-slate-700 mb-4 font-medium">{finalAnalysis.greeting}</p>
                 
-                {/* Insights */}
                 <div className="space-y-3 mb-4">
                   {finalAnalysis.insights.map((insight, i) => (
-                    <div key={i} className="bg-gradient-to-r from-teal-50 to-slate-50 rounded-xl p-4">
+                    <div key={i} className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-1">
                         <span>{insight.icon}</span>
                         <span className="font-semibold text-slate-800">{insight.title}</span>
@@ -279,37 +331,27 @@ export default function QuizPage() {
 
                 <p className="text-slate-600 italic mb-4">"{finalAnalysis.curiosityHook}"</p>
                 
-                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium ${
-                  finalAnalysis.improvementPotential === 'high' 
-                    ? 'bg-green-100 text-green-700'
-                    : finalAnalysis.improvementPotential === 'medium'
-                      ? 'bg-amber-100 text-amber-700'
-                      : 'bg-blue-100 text-blue-700'
-                }`}>
-                  {finalAnalysis.improvementPotential === 'high' && '🚀'}
-                  {finalAnalysis.improvementPotential === 'medium' && '📈'}
-                  {finalAnalysis.improvementPotential === 'moderate' && '💪'}
-                  {locale === 'es' ? 'Alto Potencial de Mejora' : 'High Improvement Potential'}
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-emerald-100 text-emerald-700">
+                  🚀 {locale === 'es' ? 'Alto Potencial de Mejora' : 'High Improvement Potential'}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Encouragement & CTA */}
           <div className="text-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <p className="text-slate-600 mb-6">{finalAnalysis.encouragement}</p>
             
             <button
               onClick={goToResults}
-              className="w-full md:w-auto bg-gradient-to-r from-teal-500 to-teal-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-teal-500/30 hover:-translate-y-1 transition-all"
+              className="w-full md:w-auto bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl hover:shadow-emerald-500/30 hover:-translate-y-1 transition-all"
             >
-              {locale === 'es' ? '🔓 Ver Mi Reporte Personalizado' : '🔓 See My Personalized Report'}
+              {locale === 'es' ? '🔓 Ver Mi Plan Personalizado' : '🔓 See My Personalized Plan'}
             </button>
             
             <p className="text-sm text-slate-400 mt-4">
               {locale === 'es' 
-                ? 'Tu reporte incluye un plan de acción específico para tus resultados'
-                : 'Your report includes a specific action plan for your results'}
+                ? 'Tu plan incluye estrategias específicas para restaurar tu salud intestinal'
+                : 'Your plan includes specific strategies to restore your gut health'}
             </p>
           </div>
         </div>
@@ -317,32 +359,119 @@ export default function QuizPage() {
     )
   }
 
-  // Loading Analysis View
-  if (isAnalyzing) {
+  // Analyzing View
+  if (quizPhase === 'analyzing') {
     return (
-      <main className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-coral-50 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50 flex items-center justify-center">
         <div className="text-center px-6">
-          <div className="w-20 h-20 border-4 border-teal-200 border-t-teal-500 rounded-full animate-spin mx-auto mb-6"></div>
+          <div className="w-20 h-20 border-4 border-emerald-200 border-t-emerald-500 rounded-full animate-spin mx-auto mb-6"></div>
           <h2 className="text-2xl font-bold text-slate-800 mb-2">
-            {locale === 'es' ? 'Analizando tus respuestas...' : 'Analyzing your responses...'}
+            {locale === 'es' ? 'Creando tu plan personalizado...' : 'Creating your personalized plan...'}
           </h2>
           <p className="text-slate-500">
-            {locale === 'es' ? 'Nuestra IA está creando tu perfil personalizado' : 'Our AI is creating your personalized profile'}
+            {locale === 'es' ? 'Analizando tus respuestas para crear recomendaciones únicas' : 'Analyzing your responses to create unique recommendations'}
           </p>
         </div>
       </main>
     )
   }
 
-  // Quiz Questions View
+  // Welcome & Concern Phase
+  if (quizPhase === 'welcome' || quizPhase === 'concern') {
+    return (
+      <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+        <nav className="bg-white/80 backdrop-blur-md border-b border-emerald-100">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex items-center justify-between h-16 md:h-20">
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <span className="font-bold text-xl text-slate-800">{t('site.name')}</span>
+              </Link>
+              <LanguageSwitcher />
+            </div>
+          </div>
+        </nav>
+
+        <div className="max-w-2xl mx-auto px-6 py-12">
+          <div className="space-y-4">
+            {/* AI Welcome Message */}
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                <span className="text-xl">🤖</span>
+              </div>
+              <div className="flex-1 bg-white rounded-2xl rounded-tl-none p-6 shadow-sm border border-emerald-100">
+                {aiWelcomeMessage ? (
+                  <p className="text-slate-700 leading-relaxed">{aiWelcomeMessage}</p>
+                ) : (
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* User Input for Chief Concern */}
+            {quizPhase === 'concern' && !aiConcernResponse && (
+              <div className="ml-[60px] animate-fade-in">
+                <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-200">
+                  <p className="text-sm text-slate-500 mb-3">
+                    {locale === 'es' 
+                      ? '¿Cuál es tu principal preocupación de salud?' 
+                      : "What's your main health concern right now?"}
+                  </p>
+                  <textarea
+                    value={chiefConcern}
+                    onChange={(e) => setChiefConcern(e.target.value)}
+                    placeholder={locale === 'es' 
+                      ? 'Ej: Me siento cansado todo el tiempo, problemas de digestión, quiero perder peso...' 
+                      : 'E.g., I feel tired all the time, digestion issues, want to lose weight...'}
+                    className="w-full p-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none resize-none text-slate-700"
+                    rows={3}
+                  />
+                  <button
+                    onClick={handleConcernSubmit}
+                    disabled={!chiefConcern.trim() || isAiTyping}
+                    className="mt-3 w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white py-3 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg transition-all"
+                  >
+                    {locale === 'es' ? 'Compartir' : 'Share'}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* AI Response to Concern */}
+            {aiConcernResponse && (
+              <div className="flex items-start gap-3 animate-fade-in">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span className="text-xl">🤖</span>
+                </div>
+                <div className="flex-1 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl rounded-tl-none p-6 shadow-sm border border-emerald-100">
+                  <p className="text-slate-700 leading-relaxed">{aiConcernResponse}</p>
+                </div>
+              </div>
+            )}
+
+            <div ref={chatEndRef}></div>
+          </div>
+        </div>
+      </main>
+    )
+  }
+
+  // Questions Phase
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-teal-50">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <main className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-amber-50">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-emerald-100">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center shadow-lg shadow-teal-500/30">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
@@ -361,24 +490,23 @@ export default function QuizPage() {
             <span className="text-sm text-slate-500">
               {t('quiz.progress', { current: currentQuestion + 1, total: questionKeys.length })}
             </span>
-            <span className="text-sm font-semibold text-teal-600">{Math.round(progress)}%</span>
+            <span className="text-sm font-semibold text-emerald-600">{Math.round(progress)}%</span>
           </div>
           <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-teal-400 to-teal-500 transition-all duration-500"
+              className="h-full bg-gradient-to-r from-emerald-400 to-teal-500 transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
         </div>
 
-        {/* Chat-style interface */}
         <div className="space-y-4">
-          {/* AI Avatar + Question */}
+          {/* AI Question */}
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
               <span className="text-lg">🤖</span>
             </div>
-            <div className="flex-1 bg-white rounded-2xl rounded-tl-none p-5 shadow-sm border border-slate-100">
+            <div className="flex-1 bg-white rounded-2xl rounded-tl-none p-5 shadow-sm border border-emerald-100">
               {currentQuestion > 0 && (
                 <button 
                   onClick={goBack}
@@ -397,39 +525,37 @@ export default function QuizPage() {
           </div>
 
           {/* Answer Options */}
-          <div className="ml-13 pl-13">
-            <div className="grid gap-2 ml-[52px]">
-              {optionKeys[currentKey].map((optionKey) => (
-                <button
-                  key={optionKey}
-                  onClick={() => handleAnswer(optionKey)}
-                  disabled={showAiResponse}
-                  className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
-                    answers[currentKey] === optionKey
-                      ? 'border-teal-500 bg-teal-50 text-teal-700'
-                      : 'border-slate-200 hover:border-teal-300 hover:bg-teal-50/50'
-                  } ${showAiResponse ? 'opacity-50 cursor-not-allowed' : ''}`}
-                >
-                  <span className="font-medium">
-                    {t(`quiz.questions.${currentKey}.options.${optionKey}`)}
-                  </span>
-                </button>
-              ))}
-            </div>
+          <div className="grid gap-2 ml-[52px]">
+            {optionKeys[currentKey].map((optionKey) => (
+              <button
+                key={optionKey}
+                onClick={() => handleAnswer(optionKey)}
+                disabled={showAiResponse}
+                className={`w-full text-left p-4 rounded-xl border-2 transition-all ${
+                  answers[currentKey] === optionKey
+                    ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
+                    : 'border-slate-200 hover:border-emerald-300 hover:bg-emerald-50/50'
+                } ${showAiResponse ? 'opacity-50 cursor-not-allowed' : ''}`}
+              >
+                <span className="font-medium">
+                  {t(`quiz.questions.${currentKey}.options.${optionKey}`)}
+                </span>
+              </button>
+            ))}
           </div>
 
           {/* AI Response */}
           {showAiResponse && (
             <div className="flex items-start gap-3 animate-fade-in">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center flex-shrink-0 shadow-lg">
                 <span className="text-lg">🤖</span>
               </div>
-              <div className="flex-1 bg-gradient-to-r from-teal-50 to-white rounded-2xl rounded-tl-none p-4 shadow-sm border border-teal-100">
+              <div className="flex-1 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl rounded-tl-none p-4 shadow-sm border border-emerald-100">
                 {isAiTyping && !aiResponse ? (
                   <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="w-2 h-2 bg-teal-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                   </div>
                 ) : (
                   <p className="text-slate-700">{aiResponse}</p>

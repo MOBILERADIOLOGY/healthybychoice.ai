@@ -10,12 +10,12 @@
     "contact": "Contacto"
   },
   "hero": {
-    "badge": "Salud Intestinal Respaldada por la Ciencia",
+    "badge": "Salud Intestinal con IA",
     "title": "Descubre Cómo Tu Salud Intestinal Impacta Tu",
-    "titleHighlight": "Peso",
-    "subtitle": "Realiza nuestra evaluación gratuita de 3 minutos y obtén recomendaciones personalizadas para optimizar tu microbioma.",
-    "cta": "Comienza Tu Evaluación Gratis",
-    "ctaNote": "Sin tarjeta de crédito • Resultados en 3 minutos",
+    "titleHighlight": "Bienestar General",
+    "subtitle": "Comparte tus preocupaciones de salud con nuestro guía de bienestar con IA y recibe un plan personalizado para restaurar y apoyar tu salud intestinal.",
+    "cta": "Habla con Nuestro Guía IA",
+    "ctaNote": "Evaluación personalizada gratuita • Sin tarjeta de crédito",
     "trusted": "Más de 50,000 personas confían en nosotros"
   },
   "features": {
