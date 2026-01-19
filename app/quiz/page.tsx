@@ -71,14 +71,14 @@ export default function QuizPage() {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [aiWelcomeMessage, aiConcernResponse, showAiResponse, aiResponse, quizPhase])
 
-  const typeMessage = (text: string, setter: (value: string) => void): Promise<void> => {
+  const typeMessage = (text: string, setter: React.Dispatch<React.SetStateAction<string>>): Promise<void> => {
     return new Promise((resolve) => {
       setIsAiTyping(true)
       let i = 0
       setter('')
       const interval = setInterval(() => {
         if (i < text.length) {
-          setter(prev => prev + text.charAt(i))
+          setter((prev: string) => prev + text.charAt(i))
           i++
         } else {
           clearInterval(interval)
