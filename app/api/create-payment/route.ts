@@ -3,7 +3,7 @@ import { Client, Environment } from 'square'
 
 const client = new Client({
   accessToken: process.env.SQUARE_ACCESS_TOKEN,
-  environment: process.env.NODE_ENV === 'production' ? Environment.Production : Environment.Sandbox
+  environment: Environment.Production
 })
 
 export async function POST(request: Request) {
