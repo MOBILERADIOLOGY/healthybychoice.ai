@@ -1,0 +1,309 @@
+{
+  "site": {
+    "name": "Healthy By Choice",
+    "tagline": "Tu Camino Personalizado al Bienestar"
+  },
+  "nav": {
+    "home": "Inicio",
+    "quiz": "Hacer Test",
+    "about": "Nosotros",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "badge": "Salud Intestinal Respaldada por la Ciencia",
+    "title": "Descubre Cómo Tu Salud Intestinal Impacta Tu",
+    "titleHighlight": "Peso",
+    "subtitle": "Realiza nuestra evaluación gratuita de 3 minutos y obtén recomendaciones personalizadas para optimizar tu microbioma.",
+    "cta": "Comienza Tu Evaluación Gratis",
+    "ctaNote": "Sin tarjeta de crédito • Resultados en 3 minutos",
+    "trusted": "Más de 50,000 personas confían en nosotros"
+  },
+  "features": {
+    "title": "Por Qué Importa la Salud Intestinal",
+    "subtitle": "Tu microbioma afecta todo, desde el manejo del peso hasta los niveles de energía",
+    "weight": {
+      "title": "Control de Peso",
+      "description": "Las bacterias intestinales influyen directamente en cómo tu cuerpo almacena grasa y regula las hormonas del hambre."
+    },
+    "energy": {
+      "title": "Energía y Ánimo",
+      "description": "El 90% de la serotonina se produce en tu intestino, afectando los niveles de energía y el bienestar mental."
+    },
+    "immunity": {
+      "title": "Sistema Inmune",
+      "description": "El 70% de tu sistema inmune reside en tu intestino. Un microbioma saludable significa defensas más fuertes."
+    },
+    "digestion": {
+      "title": "Mejor Digestión",
+      "description": "Reduce la hinchazón, mejora la absorción de nutrientes y apoya la comodidad digestiva general."
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Pasos simples para una mejor salud intestinal",
+    "step1": {
+      "title": "Realiza el Test",
+      "description": "Responde 10 preguntas rápidas sobre tu dieta, estilo de vida y síntomas."
+    },
+    "step2": {
+      "title": "Obtén Tu Análisis",
+      "description": "Nuestra IA analiza tus respuestas para crear tu perfil único de salud intestinal."
+    },
+    "step3": {
+      "title": "Sigue Tu Plan",
+      "description": "Recibe recomendaciones personalizadas para optimizar tu microbioma."
+    }
+  },
+  "pricing": {
+    "title": "Elige Tu Plan",
+    "subtitle": "Desbloquea tu reporte personalizado de salud intestinal",
+    "popular": "Más Popular",
+    "bestValue": "Mejor Valor",
+    "starter": {
+      "name": "Básico",
+      "price": "5.99",
+      "features": ["Análisis con IA", "Puntuación del microbioma", "Recomendaciones básicas", "Cronograma esperado"]
+    },
+    "standard": {
+      "name": "Estándar",
+      "price": "9.99",
+      "features": ["Todo en Básico", "Protocolo de Reset de 14 Días", "Guía completa de alimentos", "Guía de aceites de cocina"]
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "14.99",
+      "features": ["Todo en Estándar", "Recomendaciones de probióticos", "Guía de suplementos", "Recetas para sanar el intestino"]
+    },
+    "complete": {
+      "name": "Completo",
+      "price": "19.99",
+      "features": ["Todo en Premium", "Protocolo de Ayuno de por Vida", "Horario diario de 2 comidas", "Plan de mantenimiento a largo plazo"]
+    }
+  },
+  "cta": {
+    "title": "¿Lista Para Sentirte",
+    "titleHighlight": "Increíble?",
+    "subtitle": "¡Únete a más de 10,000 personas que han transformado su salud!",
+    "button": "Comenzar Evaluación Gratis",
+    "note": "Sin tarjeta de crédito"
+  },
+  "footer": {
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "contact": "Contáctanos",
+    "disclaimer": "Solo información educativa. No es consejo médico.",
+    "copyright": "© 2026 Healthy By Choice. Todos los derechos reservados.",
+    "madeWith": "Hecho con 💚 para tu intestino"
+  },
+  "quiz": {
+    "progress": "Pregunta {{current}} de {{total}}",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "getResults": "Obtener Mis Resultados",
+    "analyzing": "Analizando tus respuestas...",
+    "almostThere": "¡Ya casi!",
+    "assessmentComplete": "¡Evaluación Completa!",
+    "yourMicrobiomeScore": "Tu Puntuación de Microbioma",
+    "seeMyReport": "Ver Mi Reporte Personalizado",
+    "reportIncludes": "Tu reporte incluye un plan de acción específico para tus resultados",
+    "highPotential": "Alto Potencial de Mejora",
+    "questions": {
+      "goal": {
+        "question": "¿Cuál es tu meta #1 de salud ahora mismo?",
+        "options": {
+          "weight": "Control de Peso",
+          "skin": "Piel Más Clara",
+          "digestion": "Mejor Digestión",
+          "energy": "Más Energía",
+          "mood": "Mejor Estado de Ánimo"
+        }
+      },
+      "diet": {
+        "question": "¿Cómo describirías tu dieta actual?",
+        "options": {
+          "whole": "Principalmente alimentos naturales",
+          "mixed": "Mezcla de saludable y procesado",
+          "processed": "Principalmente procesado/comida rápida",
+          "plant": "Basada en plantas/vegetariana"
+        }
+      },
+      "sugar": {
+        "question": "¿Con qué frecuencia consumes alimentos o bebidas azucaradas?",
+        "options": {
+          "rarely": "Raramente (1-2x/semana)",
+          "sometimes": "A veces (3-4x/semana)",
+          "daily": "Diariamente",
+          "daily-multiple": "Varias veces al día"
+        }
+      },
+      "fiber": {
+        "question": "¿Cuántas porciones de vegetales comes al día?",
+        "options": {
+          "rarely": "Menos de 1",
+          "one-two": "1-2 porciones",
+          "three-four": "3-4 porciones",
+          "multiple": "5+ porciones"
+        }
+      },
+      "fermented": {
+        "question": "¿Comes alimentos fermentados (yogur, kimchi, chucrut)?",
+        "options": {
+          "never": "Nunca",
+          "rarely": "Raramente",
+          "weekly": "Algunas veces a la semana",
+          "daily": "Diariamente"
+        }
+      },
+      "bloating": {
+        "question": "¿Con qué frecuencia experimentas hinchazón o malestar digestivo?",
+        "options": {
+          "daily": "Diariamente",
+          "often": "Varias veces a la semana",
+          "sometimes": "Ocasionalmente",
+          "rarely": "Raramente o nunca"
+        }
+      },
+      "stress": {
+        "question": "¿Cuál es tu nivel típico de estrés?",
+        "options": {
+          "high": "Alto - constantemente estresada",
+          "moderate": "Moderado - manejable",
+          "low": "Bajo - generalmente calmada",
+          "minimal": "Mínimo - muy relajada"
+        }
+      },
+      "sleep": {
+        "question": "¿Cuántas horas de sueño duermes típicamente?",
+        "options": {
+          "less-5": "Menos de 5 horas",
+          "5-6": "5-6 horas",
+          "6-7": "6-7 horas",
+          "7-plus": "7+ horas"
+        }
+      },
+      "antibiotics": {
+        "question": "¿Has tomado antibióticos en el último año?",
+        "options": {
+          "none": "No",
+          "once": "Una vez",
+          "twice": "Dos veces",
+          "multiple": "Tres o más veces"
+        }
+      },
+      "meals": {
+        "question": "¿Cuántas comidas comes típicamente al día?",
+        "options": {
+          "one-two": "1-2 comidas",
+          "three": "3 comidas",
+          "three-snacks": "3 comidas + snacks",
+          "grazing": "Picoteo constante"
+        }
+      }
+    }
+  },
+  "results": {
+    "ready": "Tus Resultados Están Listos",
+    "title": "Tu",
+    "titleHighlight": "Microbioma",
+    "score": {
+      "label": "Puntuación de Balance del Microbioma",
+      "good": "Bueno",
+      "moderate": "Moderado",
+      "needsAttention": "Necesita Atención"
+    },
+    "goal": {
+      "title": "Tu Meta:",
+      "connection": "Tu microbioma intestinal juega un papel crucial en {{goal}}. Basándonos en tus respuestas, hay oportunidades claras para optimizar tu salud intestinal."
+    },
+    "unlock": {
+      "title": "Desbloquea Tu Reporte Completo",
+      "subtitle": "Elige el plan que se ajuste a tus metas",
+      "totalValue": "Valor Total: $30+",
+      "secure": "Pago seguro • Garantía de 30 días",
+      "getButton": "Obtener {{plan}} — ${{price}}"
+    },
+    "aiAnalysis": {
+      "title": "Análisis Personalizado con IA",
+      "snapshot": "Tu Panorama del Microbioma",
+      "recommendations": "Recomendaciones Clave",
+      "foodsToAdd": "Alimentos para Agregar",
+      "foodsToLimit": "Alimentos para Limitar"
+    },
+    "resetProtocol": {
+      "title": "Protocolo de Reset de 14 Días",
+      "remove": "Eliminar por 14 Días",
+      "removeList": "Azúcares añadidos, carbohidratos refinados (pan, pasta, arroz), aceites de semillas (canola, soya, maíz)",
+      "cooking": "Reglas de Cocina",
+      "cookingTip": "Nunca calientes aceite de oliva/aguacate. Usa solo aceite de coco o ghee para cocinar.",
+      "focus": "Enfócate En",
+      "focusList": "Vegetales sin almidón, proteínas de calidad, grasas saludables, bayas, caldo de huesos, alimentos fermentados"
+    },
+    "probiotics": {
+      "title": "Guía de Probióticos",
+      "strain1": "Lactobacillus rhamnosus GG — Inmunidad y digestión",
+      "strain2": "Bifidobacterium longum — Reduce la inflamación",
+      "strain3": "Saccharomyces boulardii — Recuperación post-antibióticos"
+    },
+    "fasting": {
+      "title": "Protocolo de Ayuno de por Vida",
+      "exclusive": "Exclusivo del Plan Completo",
+      "twoMeal": "Protocolo de Dos Comidas",
+      "firstMeal": "Primera Comida: Por la mañana cuando tengas hambre",
+      "secondMeal": "Segunda Comida: 6 horas después (última comida)",
+      "noEating": "No comer 6 horas antes de dormir",
+      "betweenMeals": "Entre comidas: Sin alimentos sólidos, sin azúcar/carbos, sin snacks. ¡Solo agua!",
+      "habit": "Una vez sea hábito (2-3 semanas), ¡mantén los resultados de por vida!"
+    },
+    "upsell": {
+      "title": "Desbloquea el Protocolo de Ayuno de por Vida",
+      "description": "Actualiza a Completo para nuestro poderoso protocolo de ayuno intermitente de 2 comidas — el sistema \"configúralo y olvídate\" para mantener resultados para siempre.",
+      "price": "Solo ${{price}} más para actualizar",
+      "button": "Actualizar Ahora"
+    },
+    "upgradeModal": {
+      "title": "Actualizar a Completo",
+      "subtitle": "Desbloquea el Protocolo de Ayuno de por Vida",
+      "whatYouGet": "Lo que obtendrás:",
+      "feature1": "Protocolo Diario de 2 Comidas",
+      "feature2": "Guía de horarios óptimos de comidas",
+      "feature3": "Estrategias para manejar el hambre",
+      "feature4": "Plan de mantenimiento a largo plazo",
+      "feature5": "Acceso de por vida a actualizaciones",
+      "oneTime": "actualización única",
+      "upgradeButton": "Actualizar Ahora",
+      "secure": "Pago seguro vía Square"
+    },
+    "timeline": {
+      "title": "Cronograma Esperado",
+      "week1": {
+        "title": "Días 1-7",
+        "desc": "Menos hinchazón, menos antojos"
+      },
+      "week2": {
+        "title": "Días 8-14",
+        "desc": "Mejor energía, piel más clara"
+      },
+      "month": {
+        "title": "Días 15-30",
+        "desc": "Mejoras visibles significativas"
+      }
+    },
+    "disclaimer": "Este reporte provee información educativa y guía de estilo de vida. No diagnostica, trata, cura ni previene ninguna enfermedad. Consulta a un profesional de la salud antes de hacer cambios.",
+    "retake": "Repetir Evaluación",
+    "processing": "Procesando...",
+    "generating": "Generando tu análisis con IA..."
+  },
+  "goals": {
+    "weight": "Control de Peso",
+    "skin": "Piel Más Clara",
+    "digestion": "Mejor Digestión",
+    "energy": "Más Energía",
+    "mood": "Mejor Estado de Ánimo"
+  },
+  "plans": {
+    "starter": "Básico",
+    "standard": "Estándar",
+    "premium": "Premium",
+    "complete": "Completo"
+  }
+}

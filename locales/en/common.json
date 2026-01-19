@@ -1,0 +1,309 @@
+{
+  "site": {
+    "name": "Healthy By Choice",
+    "tagline": "Your Personalized Path to Wellness"
+  },
+  "nav": {
+    "home": "Home",
+    "quiz": "Take Quiz",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Science-Backed Gut Health",
+    "title": "Discover How Your Gut Health Impacts Your",
+    "titleHighlight": "Weight",
+    "subtitle": "Take our free 3-minute assessment and get personalized recommendations to optimize your microbiome for lasting results.",
+    "cta": "Start Your Free Assessment",
+    "ctaNote": "No credit card required • Results in 3 minutes",
+    "trusted": "Trusted by over 50,000+ health-conscious individuals"
+  },
+  "features": {
+    "title": "Why Gut Health Matters",
+    "subtitle": "Your microbiome affects everything from weight management to energy levels",
+    "weight": {
+      "title": "Weight Management",
+      "description": "Your gut bacteria directly influence how your body stores fat and regulates hunger hormones."
+    },
+    "energy": {
+      "title": "Energy & Mood",
+      "description": "90% of serotonin is produced in your gut, affecting both energy levels and mental wellbeing."
+    },
+    "immunity": {
+      "title": "Immune Support",
+      "description": "70% of your immune system resides in your gut. A healthy microbiome means stronger defenses."
+    },
+    "digestion": {
+      "title": "Better Digestion",
+      "description": "Reduce bloating, improve nutrient absorption, and support overall digestive comfort."
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Simple steps to better gut health",
+    "step1": {
+      "title": "Take the Quiz",
+      "description": "Answer 10 quick questions about your diet, lifestyle, and symptoms."
+    },
+    "step2": {
+      "title": "Get Your Analysis",
+      "description": "Our AI analyzes your responses to create your unique gut health profile."
+    },
+    "step3": {
+      "title": "Follow Your Plan",
+      "description": "Receive personalized recommendations to optimize your microbiome."
+    }
+  },
+  "pricing": {
+    "title": "Choose Your Plan",
+    "subtitle": "Unlock your personalized gut health report",
+    "popular": "Most Popular",
+    "bestValue": "Best Value",
+    "starter": {
+      "name": "Starter",
+      "price": "5.99",
+      "features": ["AI-powered analysis", "Microbiome score", "Basic recommendations", "Expected timeline"]
+    },
+    "standard": {
+      "name": "Standard",
+      "price": "9.99",
+      "features": ["Everything in Starter", "14-Day Reset Protocol", "Complete food guide", "Cooking oils guide"]
+    },
+    "premium": {
+      "name": "Premium",
+      "price": "14.99",
+      "features": ["Everything in Standard", "Probiotic recommendations", "Supplement guide", "Gut-healing recipes"]
+    },
+    "complete": {
+      "name": "Complete",
+      "price": "19.99",
+      "features": ["Everything in Premium", "Lifetime Fasting Protocol", "2-meal daily schedule", "Long-term maintenance plan"]
+    }
+  },
+  "cta": {
+    "title": "Ready to Feel",
+    "titleHighlight": "Amazing?",
+    "subtitle": "Join over 10,000 people who have transformed their health!",
+    "button": "Start Free Assessment",
+    "note": "No credit card required"
+  },
+  "footer": {
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us",
+    "disclaimer": "Educational information only. Not medical advice.",
+    "copyright": "© 2026 Healthy By Choice. All rights reserved.",
+    "madeWith": "Made with 💚 for your gut"
+  },
+  "quiz": {
+    "progress": "Question {{current}} of {{total}}",
+    "back": "Back",
+    "next": "Next",
+    "getResults": "Get My Results",
+    "analyzing": "Analyzing your responses...",
+    "almostThere": "Almost there!",
+    "assessmentComplete": "Assessment Complete!",
+    "yourMicrobiomeScore": "Your Microbiome Score",
+    "seeMyReport": "See My Personalized Report",
+    "reportIncludes": "Your report includes a specific action plan for your results",
+    "highPotential": "High Improvement Potential",
+    "questions": {
+      "goal": {
+        "question": "What's your #1 health goal right now?",
+        "options": {
+          "weight": "Weight Management",
+          "skin": "Clearer Skin",
+          "digestion": "Better Digestion",
+          "energy": "More Energy",
+          "mood": "Improved Mood"
+        }
+      },
+      "diet": {
+        "question": "How would you describe your current diet?",
+        "options": {
+          "whole": "Mostly whole foods",
+          "mixed": "Mix of healthy and processed",
+          "processed": "Mostly processed/fast food",
+          "plant": "Plant-based/vegetarian"
+        }
+      },
+      "sugar": {
+        "question": "How often do you consume sugary foods or drinks?",
+        "options": {
+          "rarely": "Rarely (1-2x/week)",
+          "sometimes": "Sometimes (3-4x/week)",
+          "daily": "Daily",
+          "daily-multiple": "Multiple times daily"
+        }
+      },
+      "fiber": {
+        "question": "How many servings of vegetables do you eat daily?",
+        "options": {
+          "rarely": "Less than 1",
+          "one-two": "1-2 servings",
+          "three-four": "3-4 servings",
+          "multiple": "5+ servings"
+        }
+      },
+      "fermented": {
+        "question": "Do you eat fermented foods (yogurt, kimchi, sauerkraut)?",
+        "options": {
+          "never": "Never",
+          "rarely": "Rarely",
+          "weekly": "A few times a week",
+          "daily": "Daily"
+        }
+      },
+      "bloating": {
+        "question": "How often do you experience bloating or digestive discomfort?",
+        "options": {
+          "daily": "Daily",
+          "often": "Several times a week",
+          "sometimes": "Occasionally",
+          "rarely": "Rarely or never"
+        }
+      },
+      "stress": {
+        "question": "What's your typical stress level?",
+        "options": {
+          "high": "High - constantly stressed",
+          "moderate": "Moderate - manageable",
+          "low": "Low - generally calm",
+          "minimal": "Minimal - very relaxed"
+        }
+      },
+      "sleep": {
+        "question": "How many hours of sleep do you typically get?",
+        "options": {
+          "less-5": "Less than 5 hours",
+          "5-6": "5-6 hours",
+          "6-7": "6-7 hours",
+          "7-plus": "7+ hours"
+        }
+      },
+      "antibiotics": {
+        "question": "Have you taken antibiotics in the past year?",
+        "options": {
+          "none": "No",
+          "once": "Once",
+          "twice": "Twice",
+          "multiple": "Three or more times"
+        }
+      },
+      "meals": {
+        "question": "How many meals do you typically eat per day?",
+        "options": {
+          "one-two": "1-2 meals",
+          "three": "3 meals",
+          "three-snacks": "3 meals + snacks",
+          "grazing": "Constant grazing"
+        }
+      }
+    }
+  },
+  "results": {
+    "ready": "Your Results Are Ready",
+    "title": "Your Microbiome",
+    "titleHighlight": "Snapshot",
+    "score": {
+      "label": "Microbiome Balance Score",
+      "good": "Good",
+      "moderate": "Moderate",
+      "needsAttention": "Needs Attention"
+    },
+    "goal": {
+      "title": "Your Goal:",
+      "connection": "Your gut microbiome plays a crucial role in {{goal}}. Based on your responses, there are clear opportunities to optimize your gut health."
+    },
+    "unlock": {
+      "title": "Unlock Your Full Report",
+      "subtitle": "Choose the plan that fits your goals",
+      "totalValue": "Total Value: $30+",
+      "secure": "Secure payment • 30-day guarantee",
+      "getButton": "Get {{plan}} — ${{price}}"
+    },
+    "aiAnalysis": {
+      "title": "AI-Personalized Analysis",
+      "snapshot": "Your Microbiome Snapshot",
+      "recommendations": "Key Recommendations",
+      "foodsToAdd": "Foods to Add",
+      "foodsToLimit": "Foods to Limit"
+    },
+    "resetProtocol": {
+      "title": "14-Day Reset Protocol",
+      "remove": "Remove for 14 Days",
+      "removeList": "Added sugars, refined carbs (bread, pasta, rice), seed oils (canola, soybean, corn)",
+      "cooking": "Cooking Rules",
+      "cookingTip": "Never heat olive/avocado oil. Use only coconut oil or ghee for cooking.",
+      "focus": "Focus On",
+      "focusList": "Non-starchy veggies, quality proteins, healthy fats, berries, bone broth, fermented foods"
+    },
+    "probiotics": {
+      "title": "Probiotic Guide",
+      "strain1": "Lactobacillus rhamnosus GG — Immune & digestion",
+      "strain2": "Bifidobacterium longum — Reduces inflammation",
+      "strain3": "Saccharomyces boulardii — Post-antibiotic recovery"
+    },
+    "fasting": {
+      "title": "Lifetime Fasting Protocol",
+      "exclusive": "Complete Plan Exclusive",
+      "twoMeal": "Two-Meal Protocol",
+      "firstMeal": "First Meal: Morning when hungry",
+      "secondMeal": "Second Meal: 6 hours later (final meal)",
+      "noEating": "No eating 6 hours before bed",
+      "betweenMeals": "Between meals: No solid food, no sugar/carbs, no snacking. Water only!",
+      "habit": "Once habit (2-3 weeks), maintain results for life!"
+    },
+    "upsell": {
+      "title": "Unlock the Lifetime Fasting Protocol",
+      "description": "Upgrade to Complete for our powerful 2-meal intermittent fasting protocol — the \"set it and forget it\" system for maintaining results forever.",
+      "price": "Just ${{price}} more to upgrade",
+      "button": "Upgrade Now"
+    },
+    "upgradeModal": {
+      "title": "Upgrade to Complete",
+      "subtitle": "Unlock the Lifetime Fasting Protocol",
+      "whatYouGet": "What you'll get:",
+      "feature1": "2-Meal Daily Protocol",
+      "feature2": "Optimal meal timing guide",
+      "feature3": "Hunger management strategies",
+      "feature4": "Long-term maintenance plan",
+      "feature5": "Lifetime access to updates",
+      "oneTime": "one-time upgrade",
+      "upgradeButton": "Upgrade Now",
+      "secure": "Secure payment via Square"
+    },
+    "timeline": {
+      "title": "Expected Timeline",
+      "week1": {
+        "title": "Days 1-7",
+        "desc": "Reduced bloating, fewer cravings"
+      },
+      "week2": {
+        "title": "Days 8-14",
+        "desc": "Improved energy, clearer skin"
+      },
+      "month": {
+        "title": "Days 15-30",
+        "desc": "Significant visible improvements"
+      }
+    },
+    "disclaimer": "This report provides educational information and lifestyle guidance. It does not diagnose, treat, cure, or prevent any disease. Consult a healthcare professional before making changes.",
+    "retake": "Retake Assessment",
+    "processing": "Processing...",
+    "generating": "Generating your AI analysis..."
+  },
+  "goals": {
+    "weight": "Weight Management",
+    "skin": "Clearer Skin",
+    "digestion": "Better Digestion",
+    "energy": "More Energy",
+    "mood": "Improved Mood"
+  },
+  "plans": {
+    "starter": "Starter",
+    "standard": "Standard",
+    "premium": "Premium",
+    "complete": "Complete"
+  }
+}
