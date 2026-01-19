@@ -63,49 +63,51 @@ Examples of good responses:
 Respond in ${locale === 'es' ? 'Spanish' : 'English'} only.`
     } 
     else if (type === 'final_analysis') {
-      // Compelling analysis after quiz completion, before paywall
-      prompt = `You are a warm, knowledgeable gut health expert. Someone just completed a gut health assessment.
+      // Compelling analysis after quiz completion, before paywall - BUILD HOPE, DON'T REVEAL
+      prompt = `You are a warm, confident gut health expert. Someone just completed a gut health assessment.
 
 Their original concern: "${chiefConcern || 'general wellness'}"
-
-Their answers:
-- Goal: ${answers.goal}
-- Diet: ${answers.diet}
-- Sugar intake: ${answers.sugar}
-- Fiber/vegetables: ${answers.fiber}
-- Fermented foods: ${answers.fermented}
-- Bloating frequency: ${answers.bloating}
-- Stress level: ${answers.stress}
-- Sleep: ${answers.sleep}
-- Antibiotics history: ${answers.antibiotics}
-- Meals per day: ${answers.meals}
-
 Their microbiome score: ${score}/100
+
+IMPORTANT: Do NOT give specific advice, recommendations, or reveal what's in the report. 
+Your job is to BUILD HOPE, CREATE ANTICIPATION, and make them feel their answers reveal something BREAKTHROUGH.
 
 Language: ${locale === 'es' ? 'Spanish' : 'English'}
 
-Create a compelling, personalized analysis that:
-1. Opens warmly, referencing their ORIGINAL CONCERN and showing you remembered it
-2. Highlights 2-3 KEY INSIGHTS connecting their answers TO their original concern (be specific!)
-3. Creates curiosity about what their personalized plan would reveal
-4. Ends with genuine encouragement about their potential for improvement
+Create a compelling, hope-filled response that:
+1. Opens warmly, acknowledging their concern and making them feel HEARD
+2. Express excitement - their answers reveal a CLEAR PATH forward (don't say what it is!)
+3. Use powerful words: "breakthrough", "game-changing", "transformation", "the missing piece", "revolutionary approach"
+4. Make them feel their specific combination of answers is UNIQUE and the solution is PERSONALIZED just for them
+5. Create URGENCY and HOPE - they are closer to their goal than they realize
+
+DO NOT:
+- Give any specific food recommendations
+- Mention specific supplements or probiotics
+- Reveal any protocol details
+- Give actionable advice they can use without buying
 
 Format as JSON:
 {
-  "greeting": "Personal opening that references their original concern (1-2 sentences)",
+  "greeting": "Warm opening that makes them feel heard and understood (1-2 sentences)",
   "insights": [
     {
-      "title": "Short insight title",
-      "detail": "Specific observation connecting THEIR answers to THEIR concern (2 sentences max)",
+      "title": "Intriguing title like 'Your Hidden Pattern' or 'The Missing Connection'",
+      "detail": "Tease that you've discovered something important in their answers WITHOUT revealing what it is. Build curiosity. (2 sentences max)",
+      "icon": "emoji"
+    },
+    {
+      "title": "Another intriguing title like 'Your Transformation Potential' or 'The Breakthrough Waiting'",
+      "detail": "Express confidence that their situation is highly addressable with the right approach. Don't say what the approach is. (2 sentences max)",
       "icon": "emoji"
     }
   ],
-  "curiosityHook": "What makes their situation particularly addressable - create hope (1-2 sentences)",
-  "encouragement": "Hopeful, confident closing about their improvement potential (1 sentence)",
-  "improvementPotential": "high/medium/moderate based on their answers"
+  "curiosityHook": "A compelling statement about how their personalized plan contains the game-changing strategies they've been missing (1-2 sentences)",
+  "encouragement": "Powerful, hopeful closing - they're about to discover something that could transform everything (1 sentence)",
+  "improvementPotential": "high"
 }
 
-Be specific to THEIR answers and THEIR original concern. Make them feel truly seen and understood.
+Make them feel THIS IS IT - the answer they've been searching for is in the report.
 Respond in ${locale === 'es' ? 'Spanish' : 'English'}.`
     }
 
@@ -168,23 +170,30 @@ Respond in ${locale === 'es' ? 'Spanish' : 'English'}.`
         success: true,
         analysis: {
           greeting: fallbackLocale === 'es' 
-            ? "¡Gracias por completar tu evaluación! Tus respuestas revelan información valiosa." 
-            : "Thanks for completing your assessment! Your answers reveal valuable insights.",
+            ? "¡Esto es emocionante! Tus respuestas revelan exactamente lo que necesitaba ver." 
+            : "This is exciting! Your answers reveal exactly what I needed to see.",
           insights: [
             { 
-              title: fallbackLocale === 'es' ? "Tu Perfil Único" : "Your Unique Profile", 
+              title: fallbackLocale === 'es' ? "El Patrón Oculto" : "The Hidden Pattern", 
               detail: fallbackLocale === 'es' 
-                ? "Hemos identificado patrones específicos en tus respuestas que sugieren oportunidades claras de mejora."
-                : "We've identified specific patterns in your responses that suggest clear opportunities for improvement.", 
-              icon: "🔍" 
+                ? "He identificado una conexión clave en tus respuestas que la mayoría de las personas pasan por alto. Tu reporte personalizado revelará este descubrimiento revolucionario."
+                : "I've identified a key connection in your answers that most people overlook. Your personalized report will reveal this game-changing discovery.", 
+              icon: "🔑" 
+            },
+            { 
+              title: fallbackLocale === 'es' ? "Tu Potencial de Transformación" : "Your Transformation Potential", 
+              detail: fallbackLocale === 'es' 
+                ? "Basándome en tu perfil único, veo un camino claro hacia resultados significativos. La pieza que falta está a tu alcance."
+                : "Based on your unique profile, I see a clear path to significant results. The missing piece is within your reach.", 
+              icon: "✨" 
             }
           ],
           curiosityHook: fallbackLocale === 'es'
-            ? "Tu plan personalizado revelará estrategias específicas para tu estilo de vida."
-            : "Your personalized plan will reveal specific strategies tailored to your lifestyle.",
+            ? "Tu plan personalizado contiene las estrategias revolucionarias que han estado fuera de tu alcance hasta ahora."
+            : "Your personalized plan contains the breakthrough strategies that have been out of reach until now.",
           encouragement: fallbackLocale === 'es'
-            ? "¡Pequeños cambios pueden llevar a mejoras significativas!"
-            : "Small changes can lead to significant improvements!",
+            ? "¡Estás a punto de descubrir algo que podría transformar todo!"
+            : "You're about to discover something that could transform everything!",
           improvementPotential: "high"
         }
       })
