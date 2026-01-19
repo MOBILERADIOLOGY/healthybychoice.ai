@@ -50,7 +50,7 @@ declare global {
 }
 
 export default function ResultsPage() {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
   const [answers, setAnswers] = useState<Answers | null>(null)
   const [showFullReport, setShowFullReport] = useState(false)
   const [isProcessingPayment, setIsProcessingPayment] = useState(false)
@@ -349,35 +349,68 @@ export default function ResultsPage() {
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                {['starter', 'standard', 'premium', 'complete'].map((plan) => (
-                  <button 
-                    key={plan}
-                    onClick={() => setSelectedPlan(plan)} 
-                    className={`p-4 rounded-xl text-left transition-all relative ${
-                      selectedPlan === plan 
-                        ? plan === 'complete' 
-                          ? 'bg-gradient-to-br from-amber-400 to-coral-500 text-white ring-2 ring-amber-300' 
+                {['starter', 'standard', 'premium', 'complete'].map((plan) => {
+                  const features: Record<string, string[]> = {
+                    starter: [
+                      locale === 'es' ? '→ Tu perfil de microbioma' : '→ Your microbiome profile',
+                      locale === 'es' ? '→ Por qué te sientes así' : '→ Why you feel the way you do',
+                      locale === 'es' ? '→ Primeros pasos personalizados' : '→ Your personalized first steps',
+                    ],
+                    standard: [
+                      locale === 'es' ? '→ Todo en Starter, más...' : '→ Everything in Starter, plus...',
+                      locale === 'es' ? '→ El reset de 14 días que transforma' : '→ The 14-day reset that transforms',
+                      locale === 'es' ? '→ Alimentos que sanan vs dañan' : '→ Foods that heal vs harm',
+                      locale === 'es' ? '→ Secretos de los aceites' : '→ The cooking oil secrets',
+                    ],
+                    premium: [
+                      locale === 'es' ? '→ Todo en Standard, más...' : '→ Everything in Standard, plus...',
+                      locale === 'es' ? '→ Los probióticos exactos para ti' : '→ The exact probiotics for YOU',
+                      locale === 'es' ? '→ Suplementos que realmente funcionan' : '→ Supplements that actually work',
+                      locale === 'es' ? '→ Recetas que reparan tu intestino' : '→ Recipes that repair your gut',
+                    ],
+                    complete: [
+                      locale === 'es' ? '→ Todo en Premium, más...' : '→ Everything in Premium, plus...',
+                      locale === 'es' ? '→ Ayuna como un profesional' : '→ Learn to fast like a pro',
+                      locale === 'es' ? '→ Timing de comidas para resultados' : '→ Meal timing for real results',
+                      locale === 'es' ? '→ Transforma tu estilo de vida' : '→ Transform your lifestyle forever',
+                    ],
+                  }
+                  
+                  return (
+                    <button 
+                      key={plan}
+                      onClick={() => setSelectedPlan(plan)} 
+                      className={`p-4 rounded-xl text-left transition-all relative flex flex-col ${
+                        selectedPlan === plan 
+                          ? plan === 'complete' 
+                            ? 'bg-gradient-to-br from-amber-400 to-coral-500 text-white ring-2 ring-amber-300' 
+                            : plan === 'standard'
+                              ? 'bg-gradient-to-br from-teal-400 to-teal-500 text-white ring-2 ring-teal-300'
+                              : 'bg-white text-slate-800 ring-2 ring-teal-400'
                           : plan === 'standard'
-                            ? 'bg-gradient-to-br from-teal-400 to-teal-500 text-white ring-2 ring-teal-300'
-                            : 'bg-white text-slate-800 ring-2 ring-teal-400'
-                        : plan === 'standard'
-                          ? 'bg-teal-500/20 hover:bg-teal-500/30'
-                          : plan === 'complete'
-                            ? 'bg-gradient-to-br from-amber-500/20 to-coral-500/20 hover:from-amber-500/30 hover:to-coral-500/30'
-                            : 'bg-white/10 hover:bg-white/20'
-                    }`}
-                  >
-                    {plan === 'standard' && (
-                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-coral-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                        {t('pricing.popular')}
+                            ? 'bg-teal-500/20 hover:bg-teal-500/30'
+                            : plan === 'complete'
+                              ? 'bg-gradient-to-br from-amber-500/20 to-coral-500/20 hover:from-amber-500/30 hover:to-coral-500/30'
+                              : 'bg-white/10 hover:bg-white/20'
+                      }`}
+                    >
+                      {plan === 'standard' && (
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-coral-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                          {t('pricing.popular')}
+                        </div>
+                      )}
+                      <div className={`text-xs font-semibold mb-1 ${selectedPlan === plan ? '' : 'text-teal-500'}`}>
+                        {t(`plans.${plan}`)}
                       </div>
-                    )}
-                    <div className={`text-xs font-semibold mb-1 ${selectedPlan === plan ? '' : 'text-teal-500'}`}>
-                      {t(`plans.${plan}`)}
-                    </div>
-                    <div className="text-xl font-extrabold mb-2">${planPrices[plan]}</div>
-                  </button>
-                ))}
+                      <div className="text-xl font-extrabold mb-3">${planPrices[plan]}</div>
+                      <div className={`text-xs space-y-1 flex-grow ${selectedPlan === plan ? 'text-white/90' : 'text-slate-300'}`}>
+                        {features[plan].map((feature, idx) => (
+                          <div key={idx}>{feature}</div>
+                        ))}
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
 
               <div className="bg-white rounded-xl p-6 mb-4">
