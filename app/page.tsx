@@ -42,6 +42,16 @@ export default function HomePage() {
             href="/foundational" 
             className="text-blue-700 hover:text-blue-900 font-semibold transition-colors"
           >
+         </nav>  {/* <-- Navigation ends here */}
+
+      {/* 🌱 Foundational Guide Banner - START HERE */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100 py-3 px-6">
+        <div className="max-w-6xl mx-auto flex items-center justify-center gap-2">
+          <span className="text-blue-600 font-medium">🌱</span>
+          <Link 
+            href="/foundational" 
+            className="text-blue-700 hover:text-blue-900 font-semibold transition-colors"
+          >
             New Guide: Foundational Longevity Stack - 2 Science-Backed Basics
           </Link>
           <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,6 +59,7 @@ export default function HomePage() {
           </svg>
         </div>
       </div>
+      {/* 🌱 Foundational Guide Banner - END HERE */}
 
       {/* Hero Section */}
       <section className="py-16 md:py-24 relative overflow-hidden">
