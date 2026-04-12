@@ -52,7 +52,6 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-200/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-amber-200/30 rounded-full blur-3xl"></div>
         
@@ -78,10 +77,9 @@ export default function HomePage() {
             </Link>
             <p className="text-sm text-slate-500 mt-4">{t('hero.ctaNote')}</p>
             
-            {/* Trust badge */}
             <div className="mt-10 flex items-center justify-center gap-2">
               <div className="flex -space-x-2">
-                {['😊', '🌟', '💚', '✨', '🎯'].map((emoji, i) => (
+                {['😊', '🌟', '', '✨', ''].map((emoji, i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center text-sm border-2 border-white shadow-sm">
                     {emoji}
                   </div>
@@ -146,7 +144,6 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10">
           <div className="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-2xl"></div>
           <div className="absolute bottom-10 right-10 w-60 h-60 bg-amber-300 rounded-full blur-3xl"></div>
