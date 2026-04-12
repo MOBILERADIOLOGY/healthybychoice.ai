@@ -42,16 +42,6 @@ export default function HomePage() {
             href="/foundational" 
             className="text-blue-700 hover:text-blue-900 font-semibold transition-colors"
           >
-         </nav>  {/* <-- Navigation ends here */}
-
-      {/* 🌱 Foundational Guide Banner - START HERE */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-blue-100 py-3 px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-center gap-2">
-          <span className="text-blue-600 font-medium">🌱</span>
-          <Link 
-            href="/foundational" 
-            className="text-blue-700 hover:text-blue-900 font-semibold transition-colors"
-          >
             New Guide: Foundational Longevity Stack - 2 Science-Backed Basics
           </Link>
           <svg className="w-4 h-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +49,6 @@ export default function HomePage() {
           </svg>
         </div>
       </div>
-      {/* 🌱 Foundational Guide Banner - END HERE */}
 
       {/* Hero Section */}
       <section className="py-16 md:py-24 relative overflow-hidden">
@@ -92,7 +81,7 @@ export default function HomePage() {
             {/* Trust badge */}
             <div className="mt-10 flex items-center justify-center gap-2">
               <div className="flex -space-x-2">
-                {['😊', '🌟', '', '✨', ''].map((emoji, i) => (
+                {['😊', '🌟', '💚', '✨', '🎯'].map((emoji, i) => (
                   <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center text-sm border-2 border-white shadow-sm">
                     {emoji}
                   </div>
