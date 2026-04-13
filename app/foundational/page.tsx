@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Mitochondrial Longevity Stack: NMN + Urolithin A | healthybychoice.ai',
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
   },
 }
 
-// ─── Affiliate disclosure banner ──────────────────────────────────────────────
+// ─── Affiliate disclosure ─────────────────────────────────────────────────────
 function DisclosureBanner() {
   return (
     <div id="disclosure" className="bg-amber-50 border-b border-amber-200 py-3 px-6 text-center">
       <p className="text-xs text-amber-800 max-w-4xl mx-auto">
-        <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you purchase through our links, we may earn a small commission at no extra cost to you. This does not influence our recommendations — we only feature supplements backed by peer-reviewed human research.{' '}
-        <strong>This is not medical advice.</strong> Always consult your physician before starting any supplement.
+        <strong>Affiliate Disclosure:</strong> This page contains affiliate links. We may earn a small commission at no extra cost to you. This does not influence our recommendations.{' '}
+        <strong>Not medical advice.</strong> Consult your physician before starting any supplement.
       </p>
     </div>
   )
@@ -64,12 +65,115 @@ function StudyBadge({ journal, year }: { journal: string; year: string }) {
   )
 }
 
+// ─── YouTube embed (privacy-enhanced, no competitor ads) ──────────────────────
+function VideoEmbed({ videoId, title }: { videoId: string; title: string }) {
+  return (
+    <div className="mt-8">
+      <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">
+        🎥 Watch — {title}
+      </p>
+      <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-slate-100"
+           style={{ paddingBottom: '56.25%' }}>
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  )
+}
+
+// ─── Product card with image + buy links ─────────────────────────────────────
+function ProductCard({
+  imageSrc,
+  imageAlt,
+  productName,
+  tagline,
+  amazonUrl,
+  iherbUrl,
+  accentColor,
+}: {
+  imageSrc: string
+  imageAlt: string
+  productName: string
+  tagline: string
+  amazonUrl: string
+  iherbUrl: string
+  accentColor: 'violet' | 'emerald'
+}) {
+  const accent = {
+    violet: {
+      bg: 'from-violet-600 to-purple-600',
+      shadow: 'shadow-violet-500/30',
+      btn: 'bg-white text-violet-700 hover:bg-violet-50',
+      border: 'border-violet-100',
+      badge: 'bg-violet-50 text-violet-700',
+    },
+    emerald: {
+      bg: 'from-emerald-600 to-teal-600',
+      shadow: 'shadow-emerald-500/30',
+      btn: 'bg-white text-emerald-700 hover:bg-emerald-50',
+      border: 'border-emerald-100',
+      badge: 'bg-emerald-50 text-emerald-700',
+    },
+  }[accentColor]
+
+  return (
+    <div className={`rounded-2xl border ${accent.border} overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow`}>
+      {/* Product image — linked to Amazon */}
+      <a
+        href={amazonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block relative w-full bg-slate-50 overflow-hidden group"
+        style={{ height: '220px' }}
+        aria-label={`Buy ${productName} on Amazon`}
+      >
+        <img
+          src={imageSrc}
+          alt={imageAlt}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+          <span className="text-white text-sm font-semibold">View on Amazon →</span>
+        </div>
+      </a>
+
+      {/* Info */}
+      <div className="p-5">
+        <h4 className="font-bold text-slate-800 text-base mb-1">{productName}</h4>
+        <p className="text-slate-500 text-sm mb-4">{tagline}</p>
+        <div className="flex flex-col gap-2">
+          <a
+            href={amazonUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-full text-center font-bold py-2.5 rounded-full bg-gradient-to-r ${accent.bg} text-white shadow-md ${accent.shadow} hover:opacity-90 transition-opacity text-sm`}
+          >
+            Buy on Amazon
+          </a>
+          <a
+            href={iherbUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`w-full text-center font-semibold py-2.5 rounded-full border ${accent.border} ${accent.badge} hover:opacity-80 transition-opacity text-sm`}
+          >
+            Buy on iHerb
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── Supplement 1 — NMN ───────────────────────────────────────────────────────
 function NMNSection() {
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white" id="nmn">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
         <div className="flex items-start gap-4 mb-8">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-2xl flex-shrink-0 shadow-lg shadow-violet-500/30">
             ⚡
@@ -83,19 +187,37 @@ function NMNSection() {
           </div>
         </div>
 
-        {/* The core problem */}
         <div className="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-6 mb-8 border border-violet-100">
           <h3 className="font-bold text-slate-800 text-lg mb-2">The problem no one talks about</h3>
           <p className="text-slate-600 leading-relaxed">
-            Your mitochondria — the power plants inside every cell — run on a molecule called <strong>NAD+</strong>. It drives energy production, DNA repair, and cellular communication. The catch: <strong>by middle age, your NAD+ levels have dropped roughly 50% from their peak.</strong> This decline is now considered one of the primary drivers of how we age at the cellular level.
-          </p>
-          <p className="text-slate-600 leading-relaxed mt-3">
-            NMN is a direct precursor to NAD+ — meaning your body converts it efficiently and quickly into the NAD+ your cells actually need. Think of it as restocking the fuel your mitochondria have been running short on for decades.
+            Your mitochondria run on a molecule called <strong>NAD+</strong>. It drives energy production, DNA repair, and cellular communication. The catch: <strong>by middle age, your NAD+ levels have dropped roughly 50% from their peak.</strong> NMN is a direct precursor to NAD+ — your body converts it efficiently into the fuel your cells have been running short on for decades.
           </p>
         </div>
 
-        {/* What the research says */}
-        <h3 className="font-bold text-slate-800 text-xl mb-4">What the human trials actually show</h3>
+        {/* Product cards — image + buy links */}
+        <h3 className="font-bold text-slate-800 text-xl mb-4">Recommended products</h3>
+        <div className="grid sm:grid-cols-2 gap-4 mb-8">
+          <ProductCard
+            imageSrc="https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=600&q=80"
+            imageAlt="NMN supplement capsules for NAD+ support"
+            productName="β-NMN 250–500 mg"
+            tagline="Look for pure β-NMN, third-party tested, GMP certified"
+            amazonUrl="https://www.amazon.com/s?k=NMN+nicotinamide+mononucleotide+beta+250mg+500mg"
+            iherbUrl="https://www.iherb.com/c/nmn"
+            accentColor="violet"
+          />
+          <ProductCard
+            imageSrc="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80"
+            imageAlt="NAD+ cellular energy molecule supplement"
+            productName="Liposomal NMN (enhanced absorption)"
+            tagline="Liposomal form may improve bioavailability past stomach acid"
+            amazonUrl="https://www.amazon.com/s?k=liposomal+NMN+supplement+NAD"
+            iherbUrl="https://www.iherb.com/c/nmn"
+            accentColor="violet"
+          />
+        </div>
+
+        <h3 className="font-bold text-slate-800 text-xl mb-4">What the human trials show</h3>
         <div className="space-y-4 mb-8">
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-slate-50 hover:border-violet-200 transition-colors">
             <span className="text-2xl mt-0.5">🏃</span>
@@ -104,11 +226,10 @@ function NMNSection() {
                 <StudyBadge journal="Cell Metabolism" year="2022" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                A randomized, multicenter, double-blind placebo-controlled trial found that 250 mg/day of NMN over 10 weeks improved muscle insulin sensitivity by 25% in participants compared to placebo — measured by the gold-standard metabolic test. Muscle gene expression linked to energy remodeling also improved.
+                A randomized, multicenter, double-blind placebo-controlled trial found that 250 mg/day of NMN over 10 weeks improved muscle insulin sensitivity by 25% compared to placebo. Muscle gene expression linked to energy remodeling also improved significantly.
               </p>
             </div>
           </div>
-
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-slate-50 hover:border-violet-200 transition-colors">
             <span className="text-2xl mt-0.5">🚶</span>
             <div>
@@ -116,11 +237,10 @@ function NMNSection() {
                 <StudyBadge journal="NPJ Aging" year="2022" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                In older adults (65–75), 12 weeks of NMN supplementation significantly improved 4-meter walking speed and elevated blood NAD+ and its metabolites compared to placebo — physical performance markers directly tied to healthy aging.
+                In older adults (65–75), 12 weeks of NMN supplementation significantly improved 4-meter walking speed and elevated blood NAD+ levels compared to placebo — physical markers directly tied to healthy aging trajectories.
               </p>
             </div>
           </div>
-
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-slate-50 hover:border-violet-200 transition-colors">
             <span className="text-2xl mt-0.5">🧬</span>
             <div>
@@ -128,73 +248,35 @@ function NMNSection() {
                 <StudyBadge journal="Advances in Nutrition (Meta-analysis)" year="2023" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                A systematic review and meta-analysis pooling data from 9 human studies and 412 participants concluded that NMN has positive effects on muscle function, muscle mass, and insulin resistance markers in middle-aged and elderly individuals. Telomere length preservation was also observed.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-slate-50 hover:border-violet-200 transition-colors">
-            <span className="text-2xl mt-0.5">🛡️</span>
-            <div>
-              <div className="flex flex-wrap gap-2 mb-2">
-                <StudyBadge journal="GeroScience / Multiple RCTs" year="2020–2024" />
-              </div>
-              <p className="text-slate-700 text-sm leading-relaxed">
-                Across more than a dozen human clinical trials at doses ranging from 100–1,250 mg/day, NMN has demonstrated a consistently favorable safety profile with no significant adverse events reported — confirming its tolerability for long-term use.
+                A systematic review and meta-analysis pooling 9 human studies and 412 participants concluded NMN has positive effects on muscle function, muscle mass, insulin resistance, and telomere length in middle-aged and elderly individuals.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Dosage guidance */}
         <div className="bg-white border border-slate-200 rounded-2xl p-5 mb-8">
-          <h4 className="font-bold text-slate-800 mb-3">Dosage & timing</h4>
+          <h4 className="font-bold text-slate-800 mb-3">Dosage & what to look for</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
             <div className="text-center p-3 bg-violet-50 rounded-xl">
               <div className="font-bold text-violet-700 text-lg">250–500 mg</div>
-              <div className="text-slate-600">Daily dose used in most trials</div>
+              <div className="text-slate-600">Daily dose in most trials</div>
             </div>
             <div className="text-center p-3 bg-violet-50 rounded-xl">
-              <div className="font-bold text-violet-700 text-lg">Morning</div>
-              <div className="text-slate-600">Best taken with or without food, AM</div>
+              <div className="font-bold text-violet-700 text-lg">β-NMN only</div>
+              <div className="text-slate-600">Active isomer — check the label</div>
             </div>
             <div className="text-center p-3 bg-violet-50 rounded-xl">
-              <div className="font-bold text-violet-700 text-lg">β-NMN</div>
-              <div className="text-slate-600">Look for the active β isomer only</div>
+              <div className="font-bold text-violet-700 text-lg">GMP certified</div>
+              <div className="text-slate-600">Quality manufacturing standard</div>
             </div>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl p-6 text-white">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h4 className="font-bold text-lg">Start replenishing your NAD+ today</h4>
-              <p className="text-violet-200 text-sm mt-1">Your mitochondria have been waiting — every year you wait, NAD+ levels continue to fall.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a
-                href="https://www.amazon.com/s?k=NMN+nicotinamide+mononucleotide+250mg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-violet-700 font-bold px-6 py-3 rounded-full hover:bg-violet-50 transition-colors text-sm text-center whitespace-nowrap"
-              >
-                View NMN on Amazon →
-              </a>
-              <a
-                href="https://www.iherb.com/c/nmn"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/50 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors text-sm text-center whitespace-nowrap"
-              >
-                View NMN on iHerb →
-              </a>
-            </div>
-          </div>
-          <p className="text-violet-300 text-xs mt-4">
-            💡 <strong>What to look for:</strong> Products listing β-NMN (not a blend), third-party tested, 250–500 mg per serving. Avoid proprietary blends that obscure the actual dose.
-          </p>
-        </div>
+        {/* Video — placed AFTER buy buttons so buyers aren't slowed down */}
+        <VideoEmbed
+          videoId="Ykvkg2Jz3X8"
+          title="Dr. David Sinclair (Harvard) explains NMN & NAD+ aging science — Huberman Lab"
+        />
       </div>
     </section>
   )
@@ -203,9 +285,8 @@ function NMNSection() {
 // ─── Supplement 2 — Urolithin A ───────────────────────────────────────────────
 function UroSection() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-50 via-white to-teal-50" id="urolithin">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
         <div className="flex items-start gap-4 mb-8">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-2xl flex-shrink-0 shadow-lg shadow-emerald-500/30">
             🔬
@@ -219,19 +300,40 @@ function UroSection() {
           </div>
         </div>
 
-        {/* The core concept */}
         <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-6 mb-8 border border-emerald-100">
           <h3 className="font-bold text-slate-800 text-lg mb-2">Your cells have a built-in recycling system — and it slows with age</h3>
           <p className="text-slate-600 leading-relaxed">
-            <strong>Mitophagy</strong> is your body's process for identifying and clearing out damaged, dysfunctional mitochondria so they can be replaced with healthy ones. It's essentially cellular housekeeping at the most fundamental level. The problem: this recycling process slows dramatically as you age, allowing damaged mitochondria to accumulate and drag down cellular energy production throughout your entire body.
+            <strong>Mitophagy</strong> is your body's process for identifying and clearing out damaged mitochondria so they can be replaced with healthy ones. This recycling slows dramatically with age, allowing damaged mitochondria to accumulate and drag down energy production throughout your entire body. Urolithin A is the <strong>only compound with human clinical trial data directly confirming mitophagy activation.</strong>
           </p>
           <p className="text-slate-600 leading-relaxed mt-3">
-            Urolithin A is the <strong>only compound that has demonstrated mitophagy activation in human clinical trials</strong>. It's derived naturally from pomegranate, berries, and walnuts via your gut microbiome — but the research shows that supplementing directly bypasses the gut conversion step that most people's microbiomes can't reliably complete.
+            It's derived from pomegranate, berries, and walnuts via your gut microbiome — but only about 30–40% of people can produce it naturally at meaningful levels. Direct supplementation bypasses this gap entirely.
           </p>
         </div>
 
-        {/* What the research says */}
-        <h3 className="font-bold text-slate-800 text-xl mb-4">What the human trials actually show</h3>
+        {/* Product cards */}
+        <h3 className="font-bold text-slate-800 text-xl mb-4">Recommended products</h3>
+        <div className="grid sm:grid-cols-2 gap-4 mb-8">
+          <ProductCard
+            imageSrc="https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=600&q=80"
+            imageAlt="Pomegranate — the natural source of Urolithin A"
+            productName="Timeline Mitopure® (Softgels)"
+            tagline="The clinically studied form — 500 mg/day, NSF certified"
+            amazonUrl="https://www.amazon.com/s?k=Timeline+Mitopure+Urolithin+A+softgels"
+            iherbUrl="https://www.iherb.com/c/urolithin-a"
+            accentColor="emerald"
+          />
+          <ProductCard
+            imageSrc="https://images.unsplash.com/photo-1550159930-40066082a4fc?w=600&q=80"
+            imageAlt="Urolithin A supplement powder for mitochondrial health"
+            productName="Timeline Mitopure® (Berry Powder)"
+            tagline="Mix into yogurt or smoothies — same 500 mg clinically tested dose"
+            amazonUrl="https://www.amazon.com/s?k=Timeline+Mitopure+Urolithin+A+powder+berry"
+            iherbUrl="https://www.iherb.com/c/urolithin-a"
+            accentColor="emerald"
+          />
+        </div>
+
+        <h3 className="font-bold text-slate-800 text-xl mb-4">What the human trials show</h3>
         <div className="space-y-4 mb-8">
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-white hover:border-emerald-200 transition-colors">
             <span className="text-2xl mt-0.5">🧪</span>
@@ -240,11 +342,10 @@ function UroSection() {
                 <StudyBadge journal="Nature Metabolism" year="2019" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                The first-in-human clinical trial of Urolithin A — published in one of science's most prestigious journals — confirmed it is safe, bioavailable, and induces a measurable molecular signature of improved mitochondrial health in human skeletal muscle after just 4 weeks of oral supplementation.
+                The first-in-human clinical trial confirmed Urolithin A is safe, bioavailable, and induces a measurable molecular signature of improved mitochondrial health in human skeletal muscle after 4 weeks of oral supplementation.
               </p>
             </div>
           </div>
-
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-white hover:border-emerald-200 transition-colors">
             <span className="text-2xl mt-0.5">💪</span>
             <div>
@@ -252,11 +353,10 @@ function UroSection() {
                 <StudyBadge journal="Cell Reports Medicine" year="2022" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                A randomized, double-blind, placebo-controlled trial (88 participants, 4 months) found approximately 12% improvement in muscle strength with Urolithin A. Aerobic endurance (VO₂ peak) and 6-minute walk test performance also showed clinically meaningful improvements. Plasma C-reactive protein (inflammation marker) was significantly reduced, and muscle biopsies confirmed upregulation of proteins linked to mitophagy and mitochondrial metabolism.
+                A randomized, double-blind, placebo-controlled trial (88 participants, 4 months) found approximately 12% improvement in muscle strength. Aerobic endurance and walk performance also improved. C-reactive protein (inflammation) was significantly reduced. Muscle biopsies confirmed upregulation of mitophagy proteins.
               </p>
             </div>
           </div>
-
           <div className="flex gap-4 p-5 rounded-xl border border-slate-100 bg-white hover:border-emerald-200 transition-colors">
             <span className="text-2xl mt-0.5">🛡️</span>
             <div>
@@ -264,67 +364,44 @@ function UroSection() {
                 <StudyBadge journal="Nature Aging" year="2026" />
               </div>
               <p className="text-slate-700 text-sm leading-relaxed">
-                The most recent RCT (50 healthy middle-aged adults, 1,000 mg/day for 4 weeks) demonstrated that Urolithin A expanded populations of less-exhausted, more youthful CD8+ immune cells — and improved CD8+ fatty acid oxidation capacity — suggesting benefits extend to immune aging, not just muscle.
+                The most recent RCT (50 healthy middle-aged adults, 1,000 mg/day, 4 weeks) demonstrated that Urolithin A expanded populations of less-exhausted, more youthful CD8+ immune cells — suggesting benefits extend beyond muscle to immune aging.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Dosage guidance */}
         <div className="bg-white border border-slate-200 rounded-2xl p-5 mb-8">
-          <h4 className="font-bold text-slate-800 mb-3">Dosage & timing</h4>
+          <h4 className="font-bold text-slate-800 mb-3">Dosage & what to look for</h4>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
             <div className="text-center p-3 bg-emerald-50 rounded-xl">
               <div className="font-bold text-emerald-700 text-lg">500–1,000 mg</div>
-              <div className="text-slate-600">Dose range used in published trials</div>
-            </div>
-            <div className="text-center p-3 bg-emerald-50 rounded-xl">
-              <div className="font-bold text-emerald-700 text-lg">Any time</div>
-              <div className="text-slate-600">Food does not affect bioavailability</div>
+              <div className="text-slate-600">Dose range in published trials</div>
             </div>
             <div className="text-center p-3 bg-emerald-50 rounded-xl">
               <div className="font-bold text-emerald-700 text-lg">Mitopure™</div>
-              <div className="text-slate-600">The clinically studied form by Timeline</div>
+              <div className="text-slate-600">Only clinically validated form</div>
+            </div>
+            <div className="text-center p-3 bg-emerald-50 rounded-xl">
+              <div className="font-bold text-emerald-700 text-lg">Any time</div>
+              <div className="text-slate-600">Food doesn't affect absorption</div>
             </div>
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 rounded-2xl p-6 text-white">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-              <h4 className="font-bold text-lg">Activate your cellular recycling system today</h4>
-              <p className="text-emerald-200 text-sm mt-1">Every day, damaged mitochondria accumulate. Urolithin A is the only supplement shown in humans to reverse that process.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <a
-                href="https://www.amazon.com/s?k=urolithin+a+mitopure+timeline"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-emerald-700 font-bold px-6 py-3 rounded-full hover:bg-emerald-50 transition-colors text-sm text-center whitespace-nowrap"
-              >
-                View Urolithin A on Amazon →
-              </a>
-              <a
-                href="https://www.iherb.com/c/urolithin-a"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/50 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-colors text-sm text-center whitespace-nowrap"
-              >
-                View Urolithin A on iHerb →
-              </a>
-            </div>
-          </div>
-          <p className="text-emerald-300 text-xs mt-4">
-            💡 <strong>What to look for:</strong> The brand Timeline's Mitopure is the most clinically studied form. Look for a clearly labeled dose of 500–1,000 mg Urolithin A, not a proprietary blend.
-          </p>
-        </div>
+        {/* Video — after buy buttons */}
+        <VideoEmbed
+          videoId="REPLACE_WITH_URO_VIDEO_ID"
+          title="The science of Urolithin A and mitophagy explained"
+        />
+        <p className="text-xs text-slate-400 mt-2">
+          💡 <strong>Note for site owner:</strong> Replace <code>REPLACE_WITH_URO_VIDEO_ID</code> above with a YouTube video ID of your choice — Timeline's official channel, Peter Attia, or Dr. Mark Hyman's interview with Timeline's CMO Dr. Anurag Singh are all excellent options.
+        </p>
       </div>
     </section>
   )
 }
 
-// ─── Combined stack callout ────────────────────────────────────────────────────
+// ─── Combined stack section ───────────────────────────────────────────────────
 function StackSection() {
   return (
     <section className="py-16 bg-slate-900 text-white">
@@ -339,18 +416,18 @@ function StackSection() {
           </span>
         </h2>
         <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          NMN replenishes the NAD+ fuel your existing mitochondria need to function properly. Urolithin A removes the damaged mitochondria that are dragging everything down and triggering cellular senescence. Together, they address the same fundamental problem from two different angles — making the combination more comprehensive than either alone.
+          NMN replenishes the NAD+ fuel your existing mitochondria need to function. Urolithin A removes damaged mitochondria that are dragging everything down. Together they address the same root problem from two different angles.
         </p>
         <div className="grid md:grid-cols-2 gap-6 text-left">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
             <div className="text-3xl mb-3">⚡ NMN</div>
             <div className="text-white font-semibold mb-2">Refuels your mitochondria</div>
-            <div className="text-slate-400 text-sm">Restores NAD+ — the molecule that powers cellular energy production, DNA repair, and sirtuin activation. Declines ~50% by midlife.</div>
+            <div className="text-slate-400 text-sm">Restores NAD+ — down ~50% by midlife — powering cellular energy production, DNA repair, and sirtuin activation.</div>
           </div>
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
             <div className="text-3xl mb-3">🔬 Urolithin A</div>
             <div className="text-white font-semibold mb-2">Clears out the damaged ones</div>
-            <div className="text-slate-400 text-sm">Activates mitophagy — the cellular process that identifies and removes dysfunctional mitochondria before they trigger inflammation and accelerate aging.</div>
+            <div className="text-slate-400 text-sm">Activates mitophagy — the cellular process that removes dysfunctional mitochondria before they trigger inflammation and accelerate aging.</div>
           </div>
         </div>
       </div>
@@ -377,18 +454,15 @@ function Hero() {
           </span>
           {' '}Your Mitochondria
         </h1>
-        <p className="text-lg md:text-xl text-slate-300 mb-4 leading-relaxed max-w-2xl mx-auto">
-          Mitochondrial decline is not inevitable — it's addressable. These are the only two supplements with peer-reviewed, randomized, controlled human trial data supporting direct mitochondrial and cellular aging benefits.
-        </p>
-        <p className="text-slate-400 text-sm mb-10">
-          No omega-3s. No generic antioxidants. These go deeper.
+        <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto">
+          These are the only two supplements with peer-reviewed, randomized, controlled human trial data supporting direct mitochondrial and cellular aging benefits.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#nmn" className="bg-violet-500 hover:bg-violet-400 text-white font-bold px-8 py-3.5 rounded-full transition-colors shadow-lg shadow-violet-500/30">
-            ⚡ Start with NMN
+            ⚡ NMN — Refuel Your Cells
           </a>
           <a href="#urolithin" className="bg-emerald-500 hover:bg-emerald-400 text-white font-bold px-8 py-3.5 rounded-full transition-colors shadow-lg shadow-emerald-500/30">
-            🔬 Start with Urolithin A
+            🔬 Urolithin A — Clear the Damage
           </a>
         </div>
       </div>
@@ -400,13 +474,11 @@ function Hero() {
 function Footer() {
   return (
     <footer className="py-12 bg-white border-t border-slate-100">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center text-xs text-slate-400 max-w-3xl mx-auto">
-          <p className="mb-2">
-            <strong>Medical disclaimer:</strong> The information on this page is for educational purposes only and is not intended as medical advice, diagnosis, or treatment. Statements about supplements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease. Always consult a qualified healthcare provider before starting any supplement regimen.
-          </p>
-          <p>© {new Date().getFullYear()} Healthy By Choice · <Link href="/" className="hover:text-emerald-600 underline">Home</Link> · <Link href="/foundational#disclosure" className="hover:text-emerald-600 underline">Affiliate Disclosure</Link></p>
-        </div>
+      <div className="max-w-6xl mx-auto px-6 text-center text-xs text-slate-400 max-w-3xl mx-auto">
+        <p className="mb-2">
+          <strong>Medical disclaimer:</strong> Information on this page is for educational purposes only. Not intended as medical advice, diagnosis, or treatment. Statements have not been evaluated by the FDA. These products are not intended to diagnose, treat, cure, or prevent any disease. Consult a qualified healthcare provider before starting any supplement.
+        </p>
+        <p>© {new Date().getFullYear()} Healthy By Choice · <Link href="/" className="hover:text-emerald-600 underline">Home</Link> · <Link href="/foundational#disclosure" className="hover:text-emerald-600 underline">Affiliate Disclosure</Link></p>
       </div>
     </footer>
   )
@@ -419,12 +491,8 @@ export default function FoundationalPage() {
       <DisclosureBanner />
       <Nav />
       <Hero />
-      <div id="nmn">
-        <NMNSection />
-      </div>
-      <div id="urolithin">
-        <UroSection />
-      </div>
+      <NMNSection />
+      <UroSection />
       <StackSection />
       <Footer />
     </main>
