@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-
 // ✅ Add this metadata export
 // export const meta Metadata = {
 export const metadata: Metadata = {  
