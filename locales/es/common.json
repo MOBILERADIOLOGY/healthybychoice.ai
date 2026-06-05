@@ -1,112 +1,224 @@
 {
   "site": {
-    "name": "Healthy By Choice",
-    "tagline": "Tu Camino Personalizado al Bienestar"
+    "name": "Manná",
+    "tagline": "Pan del Cielo para el Camino Diario",
+    "subtitle": "Healthy By Choice · Una Mayordomía del Cuerpo y el Espíritu"
   },
   "nav": {
     "home": "Inicio",
-    "quiz": "Hacer Test",
+    "quiz": "Evaluación de Mayordomía",
+    "provisions": "Las Provisiones",
+    "story": "La Historia",
+    "tribe": "Tribu Fundadora",
     "about": "Nosotros",
     "contact": "Contacto"
   },
   "hero": {
-    "badge": "Salud Intestinal con IA",
-    "title": "Descubre Cómo Tu Salud Intestinal Impacta Tu",
-    "titleHighlight": "Bienestar General",
-    "subtitle": "Comparte tus preocupaciones de salud con nuestro guía de bienestar con IA y recibe un plan personalizado para restaurar y apoyar tu salud intestinal.",
-    "cta": "Habla con Nuestro Guía IA",
-    "ctaNote": "Evaluación personalizada gratuita • Sin tarjeta de crédito",
-    "trusted": "Más de 50,000 personas confían en nosotros"
+    "badge": "Mayordomía con IA · Próximamente",
+    "title": "Pan del Cielo para el",
+    "titleHighlight": "Camino Diario",
+    "subtitle": "Provisión sagrada. Ciencia moderna. Sabiduría antigua. Descubre cómo las ocho provisiones de Manná apoyan cada sistema de tu cuerpo — desde el intestino hasta el cerebro, desde la energía hasta la longevidad.",
+    "scripture": "\"Al que venciere, daré a comer del maná escondido.\" — Apocalipsis 2:17",
+    "cta": "Comienza Tu Evaluación de Mayordomía",
+    "ctaSecondary": "Únete a la Tribu Fundadora",
+    "ctaNote": "Evaluación personalizada gratuita · Sin tarjeta de crédito",
+    "trusted": "Fundado en la mayordomía bíblica y la ciencia celular moderna"
   },
   "features": {
-    "title": "Por Qué Importa la Salud Intestinal",
-    "subtitle": "Tu microbioma afecta todo, desde el manejo del peso hasta los niveles de energía",
-    "weight": {
-      "title": "Control de Peso",
-      "description": "Las bacterias intestinales influyen directamente en cómo tu cuerpo almacena grasa y regula las hormonas del hambre."
+    "title": "Ocho Provisiones, Un Pan Diario",
+    "subtitle": "Manná está construido para apoyar cada sistema del cuerpo — no es un solo suplemento, sino un marco completo para la mayordomía de toda la persona",
+    "brain": {
+      "title": "Cerebro y Sistema Nervioso",
+      "description": "La astaxantina protege las neuronas del daño oxidativo. El DHA construye las membranas del pensamiento. La mucuna apoya las vías de dopamina para el ánimo, el movimiento y la claridad."
+    },
+    "gut": {
+      "title": "Intestino y Microbioma",
+      "description": "Fibra, polifenoles y precursores de alimentos fermentados alimentan las bacterias beneficiosas. El eje intestino-cerebro se vuelve un camino de nutrición, no de inflamación."
     },
     "energy": {
-      "title": "Energía y Ánimo",
-      "description": "El 90% de la serotonina se produce en tu intestino, afectando los niveles de energía y el bienestar mental."
+      "title": "Energía y Mitocondrias",
+      "description": "Creatina, CoQ10 y cofactores de vitamina B sostienen la energía celular. El cerebro usa el 20% de la energía del cuerpo — Manná asegura que los motores tengan combustible."
     },
-    "immunity": {
-      "title": "Sistema Inmune",
-      "description": "El 70% de tu sistema inmune reside en tu intestino. Un microbioma saludable significa defensas más fuertes."
-    },
-    "digestion": {
-      "title": "Mejor Digestión",
-      "description": "Reduce la hinchazón, mejora la absorción de nutrientes y apoya la comodidad digestiva general."
+    "longevity": {
+      "title": "Longevidad y Salud Celular",
+      "description": "Los polifenoles activan Nrf2 — el interruptor maestro de las defensas antioxidantes propias de tu cuerpo. Alimentos integrales, sin azúcar, diseñados para honrar el diseño del cuerpo."
     }
   },
   "howItWorks": {
-    "title": "Cómo Funciona",
-    "subtitle": "Pasos simples para una mejor salud intestinal",
+    "title": "El Camino de Mayordomía",
+    "subtitle": "Tres pasos para comenzar el viaje",
     "step1": {
-      "title": "Realiza el Test",
-      "description": "Responde 10 preguntas rápidas sobre tu dieta, estilo de vida y síntomas."
+      "title": "Realiza la Evaluación de Mayordomía",
+      "description": "Comparte tu camino de salud con nuestro guía de IA. Diez preguntas revelan dónde tu cuerpo más necesita las ocho provisiones que ofrece Manná."
     },
     "step2": {
-      "title": "Obtén Tu Análisis",
-      "description": "Nuestra IA analiza tus respuestas para crear tu perfil único de salud intestinal."
+      "title": "Recibe Tu Camino Personalizado",
+      "description": "El análisis personalizado con IA conecta tus preocupaciones únicas con la ciencia de la mayordomía celular. Comprende lo que tu cuerpo ha estado pidiendo."
     },
     "step3": {
-      "title": "Sigue Tu Plan",
-      "description": "Recibe recomendaciones personalizadas para optimizar tu microbioma."
+      "title": "Únete a la Tribu Fundadora",
+      "description": "Sé reunido en la tribu antes del lanzamiento de la barra. Recibe enseñanzas semanales de mayordomía, acceso al precio fundador y la primera asignación de Manná."
+    }
+  },
+  "manifesto": {
+    "title": "Lo Que Creemos",
+    "body": "Creemos que el cuerpo fue sabiamente hecho — no para ser conquistado con química, sino administrado con intención. Que la medicina más poderosa crece silenciosamente en la creación, escondida a plena vista, lista para ser recogida por aquellos dispuestos a buscarla. Que la nutrición es provisión — no una transacción, sino un regalo recibido con gratitud. Y que para vencer la enfermedad, el declive y la lenta rendición a la conveniencia, debemos volver al ritmo del pan diario."
+  },
+  "provisions": {
+    "title": "Las Ocho Provisiones de Manná",
+    "subtitle": "Cada barra lleva la arquitectura que tu cuerpo fue diseñado para recibir",
+    "items": {
+      "shield": {
+        "number": "I",
+        "name": "El Escudo",
+        "description": "Astaxantina de algas silvestres. Cruza la barrera hematoencefálica para proteger las neuronas del ataque oxidativo."
+      },
+      "fuel": {
+        "number": "II",
+        "name": "El Combustible",
+        "description": "Creatina, taurina y CoQ10 — energía celular sostenida para un cerebro que usa el 20% de la energía del cuerpo."
+      },
+      "foundation": {
+        "number": "III",
+        "name": "La Fundación",
+        "description": "DHA derivado de algas, nueces y semillas de calabaza — las grasas esenciales para el cerebro que construyen las membranas neuronales."
+      },
+      "awakening": {
+        "number": "IV",
+        "name": "El Despertar",
+        "description": "Cacao, cúrcuma y canela — activando los interruptores celulares que despiertan las defensas propias del cuerpo."
+      },
+      "restoration": {
+        "number": "V",
+        "name": "La Restauración",
+        "description": "Mucuna pruriens, glicina y complejo B — apoyando las vías de dopamina que gobiernan el ánimo y el movimiento."
+      },
+      "garden": {
+        "number": "VI",
+        "name": "El Jardín",
+        "description": "Bayas silvestres, melena de león y polifenoles — alimentando la conexión intestino-cerebro desde su origen."
+      },
+      "rhythm": {
+        "number": "VII",
+        "name": "El Ritmo",
+        "description": "Arquitectura de bajo índice glucémico y proteína completa que respeta los períodos de ayuno y la flexibilidad metabólica."
+      },
+      "witness": {
+        "number": "VIII",
+        "name": "El Testimonio",
+        "description": "Solo alimentos integrales. Sin azúcar. Sin aceites de semillas. Sin nada artificial. Sellado en oro — apartado para aquellos que vencen."
+      }
     }
   },
   "pricing": {
-    "title": "Elige Tu Plan",
-    "subtitle": "Desbloquea tu reporte personalizado de salud intestinal",
+    "title": "Elige Tu Camino",
+    "subtitle": "Desbloquea tu reporte personalizado de mayordomía",
     "popular": "Más Popular",
     "bestValue": "Mejor Valor",
     "starter": {
-      "name": "Básico",
+      "name": "Primera Provisión",
       "price": "5.99",
-      "features": ["Análisis con IA", "Puntuación del microbioma", "Recomendaciones básicas", "Cronograma esperado"]
+      "features": ["Análisis personalizado de mayordomía con IA", "Tu puntuación de microbioma y salud celular", "Recomendaciones fundamentales", "Cronograma esperado de mejora"]
     },
     "standard": {
-      "name": "Estándar",
+      "name": "El Reset",
       "price": "9.99",
-      "features": ["Todo en Básico", "Protocolo de Reset de 14 Días", "Guía completa de alimentos", "Guía de aceites de cocina"]
+      "features": ["Todo en Primera Provisión", "Protocolo de Reset de Mayordomía de 14 Días", "Guía completa de alimentos integrales", "Guía de aceites para la salud celular"]
     },
     "premium": {
-      "name": "Premium",
+      "name": "La Mayordomía",
       "price": "14.99",
-      "features": ["Todo en Estándar", "Recomendaciones de probióticos", "Guía de suplementos", "Recetas para sanar el intestino"]
+      "features": ["Todo en El Reset", "Guía de probióticos y suplementos", "Stack de apoyo mitocondrial", "Recetas para sanar cerebro e intestino"]
     },
     "complete": {
-      "name": "Completo",
+      "name": "La Herencia",
       "price": "19.99",
-      "features": ["Todo en Premium", "Protocolo de Ayuno de por Vida", "Horario diario de 2 comidas", "Plan de mantenimiento a largo plazo"]
+      "features": ["Todo en La Mayordomía", "Protocolo de Ayuno de por Vida", "Horario de comidas alineado con la autofagia", "Plan de mantenimiento celular a largo plazo"]
+    }
+  },
+  "tribe": {
+    "title": "Únete a la Tribu Fundadora",
+    "subtitle": "Antes de que caiga el maná, reunimos al pueblo",
+    "promise": "Las primeras piedras van a quienes estuvieron al principio. La tribu fundadora recibe la barra de Manná antes que nadie — al precio de los fundadores — con las primeras porciones envueltas en oro reservadas y numeradas.",
+    "benefits": {
+      "first": {
+        "title": "Primera Porción",
+        "description": "Acceso reservado antes del lanzamiento público. La tribu come primero."
+      },
+      "founders": {
+        "title": "Precio de Fundadores",
+        "description": "Un descuento significativo, fijado de por vida. Honor para quienes llegaron temprano."
+      },
+      "gift": {
+        "title": "El Regalo",
+        "description": "Una barra de Manná envuelta en oro como cortesía, enviada gratuitamente con tu primer pedido."
+      },
+      "teaching": {
+        "title": "La Enseñanza",
+        "description": "Cartas semanales de mayordomía — la ciencia y la escritura detrás de la salud integral, en inglés y español."
+      }
+    },
+    "form": {
+      "title": "Sé reunido en la tribu",
+      "subtitle": "Te escribiremos con moderación — solo lo digno de tu atención.",
+      "firstName": "NOMBRE",
+      "lastName": "APELLIDO",
+      "email": "CORREO ELECTRÓNICO",
+      "language": "IDIOMA PREFERIDO",
+      "languageOptions": {
+        "english": "English",
+        "spanish": "Español",
+        "both": "Both / Ambos"
+      },
+      "journey": "¿QUÉ TE TRAE? (OPCIONAL)",
+      "journeyOptions": {
+        "select": "Elige uno...",
+        "prevention": "Salud general y prevención",
+        "brain": "Apoyo cerebral y cognitivo",
+        "family": "Familiar enfrentando enfermedad",
+        "faith": "Camino de bienestar basado en la fe",
+        "ministry": "Contexto de ministerio / enseñanza",
+        "other": "Otro"
+      },
+      "submit": "RECÍBEME EN LA TRIBU",
+      "note": "Sin spam. No vendemos tu información. Solo provisión digna de recibir.",
+      "success": {
+        "title": "Has sido reunido.",
+        "body": "Tu nombre ha sido escrito en la tribu fundadora. Mira tu bandeja de entrada — la primera carta llegará pronto, con el compromiso fundador y el camino por delante.",
+        "scripture": "\"Bienaventurados los que tienen hambre y sed de justicia, porque serán saciados.\" — Mateo 5:6"
+      }
     }
   },
   "cta": {
-    "title": "¿Lista Para Sentirte",
-    "titleHighlight": "Increíble?",
-    "subtitle": "¡Únete a más de 10,000 personas que han transformado su salud!",
-    "button": "Comenzar Evaluación Gratis",
-    "note": "Sin tarjeta de crédito"
+    "title": "¿Listo para recibir",
+    "titleHighlight": "tu pan diario?",
+    "subtitle": "Comienza el camino. Realiza la evaluación de mayordomía y descubre cómo el marco de Manná apoya el diseño de tu cuerpo.",
+    "button": "Comienza Tu Evaluación",
+    "note": "Gratis · Sin tarjeta de crédito"
   },
   "footer": {
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
     "contact": "Contáctanos",
-    "disclaimer": "Solo información educativa. No es consejo médico.",
-    "copyright": "© 2026 Healthy By Choice. Todos los derechos reservados.",
-    "madeWith": "Hecho con 💚 para tu intestino"
+    "disclaimer": "Solo información educativa. No es consejo médico. Consulta a tu médico antes de hacer cambios.",
+    "copyright": "© 2026 Manná · Healthy By Choice · Todos los derechos reservados.",
+    "madeWith": "Kenilworth, NJ · Un ministerio bilingüe de mayordomía y ciencia",
+    "scripture": "\"No solo de pan vivirá el hombre, sino de toda palabra que sale de la boca de Dios.\" — Deuteronomio 8:3"
   },
   "quiz": {
+    "title": "Tu Evaluación de Mayordomía",
+    "subtitle": "Descubre dónde tu cuerpo más necesita las provisiones de Manná",
     "progress": "Pregunta {{current}} de {{total}}",
     "back": "Atrás",
     "next": "Siguiente",
-    "getResults": "Obtener Mis Resultados",
-    "analyzing": "Analizando tus respuestas...",
+    "getResults": "Recibir Mi Camino",
+    "analyzing": "Discerniendo tu camino de mayordomía...",
     "almostThere": "¡Ya casi!",
-    "assessmentComplete": "¡Evaluación Completa!",
-    "yourMicrobiomeScore": "Tu Puntuación de Microbioma",
-    "seeMyReport": "Ver Mi Reporte Personalizado",
-    "reportIncludes": "Tu reporte incluye un plan de acción específico para tus resultados",
-    "highPotential": "Alto Potencial de Mejora",
+    "assessmentComplete": "Evaluación Completa",
+    "yourMicrobiomeScore": "Tu Puntuación de Mayordomía",
+    "seeMyReport": "Ver Mi Camino Personalizado",
+    "reportIncludes": "Tu camino incluye un plan de acción específico basado en las ocho provisiones de Manná",
+    "highPotential": "Alto Potencial de Restauración",
     "questions": {
       "goal": {
         "question": "¿Cuál es tu meta #1 de salud ahora mismo?",
@@ -115,13 +227,15 @@
           "skin": "Piel Más Clara",
           "digestion": "Mejor Digestión",
           "energy": "Más Energía",
-          "mood": "Mejor Estado de Ánimo"
+          "mood": "Mejor Estado de Ánimo",
+          "brain": "Apoyo Cerebral y de Memoria",
+          "longevity": "Longevidad y Envejecer Bien"
         }
       },
       "diet": {
         "question": "¿Cómo describirías tu dieta actual?",
         "options": {
-          "whole": "Principalmente alimentos naturales",
+          "whole": "Principalmente alimentos integrales",
           "mixed": "Mezcla de saludable y procesado",
           "processed": "Principalmente procesado/comida rápida",
           "plant": "Basada en plantas/vegetariana"
@@ -166,10 +280,10 @@
       "stress": {
         "question": "¿Cuál es tu nivel típico de estrés?",
         "options": {
-          "high": "Alto - constantemente estresada",
+          "high": "Alto - constantemente estresado",
           "moderate": "Moderado - manejable",
-          "low": "Bajo - generalmente calmada",
-          "minimal": "Mínimo - muy relajada"
+          "low": "Bajo - generalmente calmado",
+          "minimal": "Mínimo - muy relajado"
         }
       },
       "sleep": {
@@ -202,40 +316,40 @@
     }
   },
   "results": {
-    "ready": "Tus Resultados Están Listos",
-    "title": "Tu",
-    "titleHighlight": "Microbioma",
+    "ready": "Tu Camino Está Listo",
+    "title": "Tu Camino de",
+    "titleHighlight": "Mayordomía",
     "score": {
-      "label": "Puntuación de Balance del Microbioma",
-      "good": "Bueno",
-      "moderate": "Moderado",
-      "needsAttention": "Necesita Atención"
+      "label": "Tu Puntuación de Mayordomía",
+      "good": "Alineado",
+      "moderate": "Fortaleciendo",
+      "needsAttention": "Restauración Necesaria"
     },
     "goal": {
       "title": "Tu Meta:",
-      "connection": "Tu microbioma intestinal juega un papel crucial en {{goal}}. Basándonos en tus respuestas, hay oportunidades claras para optimizar tu salud intestinal."
+      "connection": "La mayordomía de tu cuerpo juega un papel crucial en {{goal}}. Basándonos en tus respuestas, el marco de Manná puede apoyar tu camino específico hacia la restauración."
     },
     "unlock": {
-      "title": "Desbloquea Tu Reporte Completo",
-      "subtitle": "Elige el plan que se ajuste a tus metas",
+      "title": "Desbloquea Tu Camino Completo",
+      "subtitle": "Elige el camino que se ajuste a tu viaje",
       "totalValue": "Valor Total: $30+",
-      "secure": "Pago seguro • Garantía de 30 días",
-      "getButton": "Obtener {{plan}} — ${{price}}"
+      "secure": "Pago seguro · Garantía de 30 días",
+      "getButton": "Recibir {{plan}} — ${{price}}"
     },
     "aiAnalysis": {
-      "title": "Análisis Personalizado con IA",
-      "snapshot": "Tu Panorama del Microbioma",
-      "recommendations": "Recomendaciones Clave",
-      "foodsToAdd": "Alimentos para Agregar",
-      "foodsToLimit": "Alimentos para Limitar"
+      "title": "Análisis de Mayordomía Personalizado con IA",
+      "snapshot": "Tu Panorama de Mayordomía",
+      "recommendations": "Tu Camino Adelante",
+      "foodsToAdd": "Alimentos para Recoger",
+      "foodsToLimit": "Alimentos para Soltar"
     },
     "resetProtocol": {
-      "title": "Protocolo de Reset de 14 Días",
-      "remove": "Eliminar por 14 Días",
+      "title": "Reset de Mayordomía de 14 Días",
+      "remove": "Soltar por 14 Días",
       "removeList": "Azúcares añadidos, carbohidratos refinados (pan, pasta, arroz), aceites de semillas (canola, soya, maíz)",
-      "cooking": "Reglas de Cocina",
+      "cooking": "Sabiduría de la Cocina",
       "cookingTip": "Nunca calientes aceite de oliva/aguacate. Usa solo aceite de coco o ghee para cocinar.",
-      "focus": "Enfócate En",
+      "focus": "Recoge Estos",
       "focusList": "Vegetales sin almidón, proteínas de calidad, grasas saludables, bayas, caldo de huesos, alimentos fermentados"
     },
     "probiotics": {
@@ -246,31 +360,31 @@
     },
     "fasting": {
       "title": "Protocolo de Ayuno de por Vida",
-      "exclusive": "Exclusivo del Plan Completo",
-      "twoMeal": "Protocolo de Dos Comidas",
+      "exclusive": "Exclusivo del Plan La Herencia",
+      "twoMeal": "Ritmo de Sabbat de Dos Comidas",
       "firstMeal": "Primera Comida: Por la mañana cuando tengas hambre",
       "secondMeal": "Segunda Comida: 6 horas después (última comida)",
       "noEating": "No comer 6 horas antes de dormir",
-      "betweenMeals": "Entre comidas: Sin alimentos sólidos, sin azúcar/carbos, sin snacks. ¡Solo agua!",
-      "habit": "Una vez sea hábito (2-3 semanas), ¡mantén los resultados de por vida!"
+      "betweenMeals": "Entre comidas: Sin alimentos sólidos, sin azúcar/carbos, sin snacks. Solo agua.",
+      "habit": "Una vez sea hábito (2-3 semanas), mantén los resultados de por vida."
     },
     "upsell": {
       "title": "Desbloquea el Protocolo de Ayuno de por Vida",
-      "description": "Actualiza a Completo para nuestro poderoso protocolo de ayuno intermitente de 2 comidas — el sistema \"configúralo y olvídate\" para mantener resultados para siempre.",
-      "price": "Solo ${{price}} más para actualizar",
+      "description": "Actualiza a La Herencia para nuestro poderoso protocolo de ayuno intermitente de 2 comidas — el ritmo que se alinea con cómo tu cuerpo fue diseñado para funcionar.",
+      "price": "Solo ${{price}} más para recibir",
       "button": "Actualizar Ahora"
     },
     "upgradeModal": {
-      "title": "Actualizar a Completo",
+      "title": "Actualizar a La Herencia",
       "subtitle": "Desbloquea el Protocolo de Ayuno de por Vida",
-      "whatYouGet": "Lo que obtendrás:",
-      "feature1": "Protocolo Diario de 2 Comidas",
+      "whatYouGet": "Lo que recibirás:",
+      "feature1": "Ritmo Diario de Dos Comidas",
       "feature2": "Guía de horarios óptimos de comidas",
-      "feature3": "Estrategias para manejar el hambre",
-      "feature4": "Plan de mantenimiento a largo plazo",
+      "feature3": "Sabiduría del hambre y los antojos",
+      "feature4": "Mantenimiento celular a largo plazo",
       "feature5": "Acceso de por vida a actualizaciones",
       "oneTime": "actualización única",
-      "upgradeButton": "Actualizar Ahora",
+      "upgradeButton": "Recibir La Herencia",
       "secure": "Pago seguro vía Square"
     },
     "timeline": {
@@ -288,22 +402,29 @@
         "desc": "Mejoras visibles significativas"
       }
     },
-    "disclaimer": "Este reporte provee información educativa y guía de estilo de vida. No diagnostica, trata, cura ni previene ninguna enfermedad. Consulta a un profesional de la salud antes de hacer cambios.",
+    "tribeOffer": {
+      "title": "Únete a la Tribu Fundadora",
+      "description": "Sé el primero en recibir la Barra Nutricional Manná cuando se lance. Precio de fundadores fijado de por vida.",
+      "button": "Recíbeme en la Tribu"
+    },
+    "disclaimer": "Este reporte provee información educativa y guía de estilo de vida basada en la ciencia actual y los principios de mayordomía bíblica. No diagnostica, trata, cura ni previene ninguna enfermedad. Consulta a un profesional de la salud antes de hacer cambios.",
     "retake": "Repetir Evaluación",
     "processing": "Procesando...",
-    "generating": "Generando tu análisis con IA..."
+    "generating": "Generando tu análisis de mayordomía..."
   },
   "goals": {
     "weight": "Control de Peso",
     "skin": "Piel Más Clara",
     "digestion": "Mejor Digestión",
     "energy": "Más Energía",
-    "mood": "Mejor Estado de Ánimo"
+    "mood": "Mejor Estado de Ánimo",
+    "brain": "Apoyo Cerebral y de Memoria",
+    "longevity": "Longevidad y Envejecer Bien"
   },
   "plans": {
-    "starter": "Básico",
-    "standard": "Estándar",
-    "premium": "Premium",
-    "complete": "Completo"
+    "starter": "Primera Provisión",
+    "standard": "El Reset",
+    "premium": "La Mayordomía",
+    "complete": "La Herencia"
   }
 }
