@@ -1,112 +1,224 @@
 {
   "site": {
-    "name": "Healthy By Choice",
-    "tagline": "Your Personalized Path to Wellness"
+    "name": "Manna",
+    "tagline": "Bread from Heaven for the Daily Journey",
+    "subtitle": "Healthy By Choice · A Stewardship of Body and Spirit"
   },
   "nav": {
     "home": "Home",
-    "quiz": "Take Quiz",
+    "quiz": "Stewardship Assessment",
+    "provisions": "The Provisions",
+    "story": "The Story",
+    "tribe": "Founding Tribe",
     "about": "About",
     "contact": "Contact"
   },
   "hero": {
-    "badge": "AI-Powered Gut Health",
-    "title": "Discover How Your Gut Health Impacts Your",
-    "titleHighlight": "Overall Wellbeing",
-    "subtitle": "Share your health concerns with our AI wellness guide and receive a personalized plan to restore and support your gut health.",
-    "cta": "Talk to Our AI Guide",
-    "ctaNote": "Free personalized assessment • No credit card required",
-    "trusted": "Trusted by over 50,000+ health-conscious individuals"
+    "badge": "AI-Powered Stewardship · Coming Soon",
+    "title": "Bread from Heaven for the",
+    "titleHighlight": "Daily Journey",
+    "subtitle": "Sacred provision. Modern science. Ancient wisdom. Discover how Manna's eight provisions support every system of your body — from gut to brain, from energy to longevity.",
+    "scripture": "\"To him that overcometh will I give to eat of the hidden manna.\" — Revelation 2:17",
+    "cta": "Begin Your Stewardship Assessment",
+    "ctaSecondary": "Join the Founding Tribe",
+    "ctaNote": "Free personalized assessment · No credit card required",
+    "trusted": "Founded on biblical stewardship and modern cellular science"
   },
   "features": {
-    "title": "Why Gut Health Matters",
-    "subtitle": "Your microbiome affects everything from weight management to energy levels",
-    "weight": {
-      "title": "Weight Management",
-      "description": "Your gut bacteria directly influence how your body stores fat and regulates hunger hormones."
+    "title": "Eight Provisions, One Daily Bread",
+    "subtitle": "Manna is built to support every system of the body — not a single supplement, but a complete framework for whole-person stewardship",
+    "brain": {
+      "title": "Brain & Nervous System",
+      "description": "Astaxanthin shields neurons from oxidative damage. DHA builds the membranes of thought. Mucuna supports dopamine pathways for mood, motion, and clarity."
+    },
+    "gut": {
+      "title": "Gut & Microbiome",
+      "description": "Fiber, polyphenols, and fermented food precursors feed the beneficial bacteria. The gut-brain axis becomes a path of nourishment, not inflammation."
     },
     "energy": {
-      "title": "Energy & Mood",
-      "description": "90% of serotonin is produced in your gut, affecting both energy levels and mental wellbeing."
+      "title": "Energy & Mitochondria",
+      "description": "Creatine, CoQ10, and B-vitamin cofactors sustain cellular energy. The brain uses 20% of your body's power — Manna ensures the engines have fuel."
     },
-    "immunity": {
-      "title": "Immune Support",
-      "description": "70% of your immune system resides in your gut. A healthy microbiome means stronger defenses."
-    },
-    "digestion": {
-      "title": "Better Digestion",
-      "description": "Reduce bloating, improve nutrient absorption, and support overall digestive comfort."
+    "longevity": {
+      "title": "Longevity & Cellular Health",
+      "description": "Polyphenols activate Nrf2 — the master switch for your body's own antioxidant defenses. Whole foods, no sugar, designed to honor the body's design."
     }
   },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Simple steps to better gut health",
+    "title": "The Stewardship Path",
+    "subtitle": "Three steps to begin the journey",
     "step1": {
-      "title": "Take the Quiz",
-      "description": "Answer 10 quick questions about your diet, lifestyle, and symptoms."
+      "title": "Take the Stewardship Assessment",
+      "description": "Share your health journey with our AI guide. Ten questions reveal where your body most needs the eight provisions Manna offers."
     },
     "step2": {
-      "title": "Get Your Analysis",
-      "description": "Our AI analyzes your responses to create your unique gut health profile."
+      "title": "Receive Your Personalized Path",
+      "description": "AI-personalized analysis connects your unique concerns to the science of cellular stewardship. Understand what your body has been asking for."
     },
     "step3": {
-      "title": "Follow Your Plan",
-      "description": "Receive personalized recommendations to optimize your microbiome."
+      "title": "Join the Founding Tribe",
+      "description": "Be gathered into the tribe before the bar launches. Receive weekly stewardship teaching, founding-price access, and the first allocation of Manna."
+    }
+  },
+  "manifesto": {
+    "title": "What We Believe",
+    "body": "We believe the body was wisely made — not to be conquered with chemistry, but stewarded with intention. That the most powerful medicine grows quietly in creation, hidden in plain sight, ready to be gathered by those willing to seek it. That nourishment is provision — not a transaction, but a gift received with gratitude. And that to overcome disease, decline, and the slow surrender to convenience, we must return to the rhythm of daily bread."
+  },
+  "provisions": {
+    "title": "The Eight Provisions of Manna",
+    "subtitle": "Each bar carries the architecture your body was designed to receive",
+    "items": {
+      "shield": {
+        "number": "I",
+        "name": "The Shield",
+        "description": "Astaxanthin from wild algae. Crosses the blood-brain barrier to protect neurons from oxidative attack."
+      },
+      "fuel": {
+        "number": "II",
+        "name": "The Fuel",
+        "description": "Creatine, taurine, and CoQ10 — sustained cellular energy for a brain that uses 20% of the body's power."
+      },
+      "foundation": {
+        "number": "III",
+        "name": "The Foundation",
+        "description": "Algae-derived DHA, walnuts, and pumpkin seeds — the brain-essential fats that build neuron membranes."
+      },
+      "awakening": {
+        "number": "IV",
+        "name": "The Awakening",
+        "description": "Cacao, turmeric, and cinnamon — flipping the cellular switches that activate the body's own defenses."
+      },
+      "restoration": {
+        "number": "V",
+        "name": "The Restoration",
+        "description": "Mucuna pruriens, glycine, and B-complex — supporting the dopamine pathways that govern mood and motion."
+      },
+      "garden": {
+        "number": "VI",
+        "name": "The Garden",
+        "description": "Wild berries, lion's mane, and polyphenols — feeding the gut-brain connection at its source."
+      },
+      "rhythm": {
+        "number": "VII",
+        "name": "The Rhythm",
+        "description": "Low-glycemic, complete-protein architecture that respects fasting windows and metabolic flexibility."
+      },
+      "witness": {
+        "number": "VIII",
+        "name": "The Witness",
+        "description": "Whole foods only. No sugar. No seed oils. No artificial anything. Sealed in gold — set apart for those who overcome."
+      }
     }
   },
   "pricing": {
-    "title": "Choose Your Plan",
-    "subtitle": "Unlock your personalized gut health report",
+    "title": "Choose Your Path",
+    "subtitle": "Unlock your personalized stewardship report",
     "popular": "Most Popular",
     "bestValue": "Best Value",
     "starter": {
-      "name": "Starter",
+      "name": "First Provision",
       "price": "5.99",
-      "features": ["AI-powered analysis", "Microbiome score", "Basic recommendations", "Expected timeline"]
+      "features": ["AI-personalized stewardship analysis", "Your microbiome and cellular health score", "Foundational recommendations", "Expected timeline of improvement"]
     },
     "standard": {
-      "name": "Standard",
+      "name": "The Reset",
       "price": "9.99",
-      "features": ["Everything in Starter", "14-Day Reset Protocol", "Complete food guide", "Cooking oils guide"]
+      "features": ["Everything in First Provision", "14-Day Stewardship Reset Protocol", "Complete whole-food guide", "Cooking oils guide for cellular health"]
     },
     "premium": {
-      "name": "Premium",
+      "name": "The Stewardship",
       "price": "14.99",
-      "features": ["Everything in Standard", "Probiotic recommendations", "Supplement guide", "Gut-healing recipes"]
+      "features": ["Everything in The Reset", "Probiotic and supplement guide", "Mitochondrial support stack", "Brain and gut-healing recipes"]
     },
     "complete": {
-      "name": "Complete",
+      "name": "The Inheritance",
       "price": "19.99",
-      "features": ["Everything in Premium", "Lifetime Fasting Protocol", "2-meal daily schedule", "Long-term maintenance plan"]
+      "features": ["Everything in The Stewardship", "Lifetime Fasting Protocol", "Autophagy-aligned meal schedule", "Long-term cellular maintenance plan"]
+    }
+  },
+  "tribe": {
+    "title": "Join the Founding Tribe",
+    "subtitle": "Before the manna falls, we gather the people",
+    "promise": "The first stones go to those who stood at the beginning. The founding tribe receives the Manna bar before anyone else — at the founders' price — with the first gold-wrapped portions reserved and numbered.",
+    "benefits": {
+      "first": {
+        "title": "First Portion",
+        "description": "Reserved access before public launch. The tribe eats first."
+      },
+      "founders": {
+        "title": "Founders' Price",
+        "description": "A meaningful discount, locked in for life. Honor for those who came early."
+      },
+      "gift": {
+        "title": "The Gift",
+        "description": "A complimentary gold-wrapped Manna bar, sent freely with your first order."
+      },
+      "teaching": {
+        "title": "The Teaching",
+        "description": "Weekly stewardship letters — the science and scripture behind whole-person health, in English and Spanish."
+      }
+    },
+    "form": {
+      "title": "Be gathered into the tribe",
+      "subtitle": "We will write to you sparingly — only what is worthy of your attention.",
+      "firstName": "FIRST NAME",
+      "lastName": "LAST NAME",
+      "email": "EMAIL",
+      "language": "PREFERRED LANGUAGE",
+      "languageOptions": {
+        "english": "English",
+        "spanish": "Español",
+        "both": "Both / Ambos"
+      },
+      "journey": "WHAT BRINGS YOU? (OPTIONAL)",
+      "journeyOptions": {
+        "select": "Choose one...",
+        "prevention": "General health and prevention",
+        "brain": "Brain and cognitive support",
+        "family": "Family member facing illness",
+        "faith": "Faith-based wellness journey",
+        "ministry": "Ministry / teaching context",
+        "other": "Other"
+      },
+      "submit": "GATHER ME INTO THE TRIBE",
+      "note": "No spam. No selling your information. Only provision worth receiving.",
+      "success": {
+        "title": "You are gathered.",
+        "body": "Your name has been written into the founding tribe. Watch your inbox — the first letter will arrive shortly, with the founding pledge and the path ahead.",
+        "scripture": "\"Blessed are those who hunger and thirst for righteousness, for they shall be filled.\" — Matthew 5:6"
+      }
     }
   },
   "cta": {
-    "title": "Ready to Feel",
-    "titleHighlight": "Amazing?",
-    "subtitle": "Join over 10,000 people who have transformed their health!",
-    "button": "Start Free Assessment",
-    "note": "No credit card required"
+    "title": "Ready to receive",
+    "titleHighlight": "your daily bread?",
+    "subtitle": "Begin the journey. Take the stewardship assessment and discover how the Manna framework supports your body's design.",
+    "button": "Start Your Assessment",
+    "note": "Free · No credit card required"
   },
   "footer": {
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact Us",
-    "disclaimer": "Educational information only. Not medical advice.",
-    "copyright": "© 2026 Healthy By Choice. All rights reserved.",
-    "madeWith": "Made with 💚 for your gut"
+    "disclaimer": "Educational information only. Not medical advice. Consult your physician before making changes.",
+    "copyright": "© 2026 Manna · Healthy By Choice · All rights reserved.",
+    "madeWith": "Kenilworth, NJ · A bilingual ministry of stewardship and science",
+    "scripture": "\"Man does not live by bread alone, but by every word that proceeds from the mouth of the Lord.\" — Deuteronomy 8:3"
   },
   "quiz": {
+    "title": "Your Stewardship Assessment",
+    "subtitle": "Discover where your body most needs Manna's provisions",
     "progress": "Question {{current}} of {{total}}",
     "back": "Back",
     "next": "Next",
-    "getResults": "Get My Results",
-    "analyzing": "Analyzing your responses...",
+    "getResults": "Receive My Path",
+    "analyzing": "Discerning your stewardship path...",
     "almostThere": "Almost there!",
-    "assessmentComplete": "Assessment Complete!",
-    "yourMicrobiomeScore": "Your Microbiome Score",
-    "seeMyReport": "See My Personalized Report",
-    "reportIncludes": "Your report includes a specific action plan for your results",
-    "highPotential": "High Improvement Potential",
+    "assessmentComplete": "Assessment Complete",
+    "yourMicrobiomeScore": "Your Stewardship Score",
+    "seeMyReport": "See My Personalized Path",
+    "reportIncludes": "Your path includes a specific action plan based on Manna's eight provisions",
+    "highPotential": "High Restoration Potential",
     "questions": {
       "goal": {
         "question": "What's your #1 health goal right now?",
@@ -115,7 +227,9 @@
           "skin": "Clearer Skin",
           "digestion": "Better Digestion",
           "energy": "More Energy",
-          "mood": "Improved Mood"
+          "mood": "Improved Mood",
+          "brain": "Brain & Memory Support",
+          "longevity": "Longevity & Aging Well"
         }
       },
       "diet": {
@@ -202,41 +316,41 @@
     }
   },
   "results": {
-    "ready": "Your Results Are Ready",
-    "title": "Your Microbiome",
-    "titleHighlight": "Snapshot",
+    "ready": "Your Path Is Ready",
+    "title": "Your Stewardship",
+    "titleHighlight": "Path",
     "score": {
-      "label": "Microbiome Balance Score",
-      "good": "Good",
-      "moderate": "Moderate",
-      "needsAttention": "Needs Attention"
+      "label": "Your Stewardship Score",
+      "good": "Aligned",
+      "moderate": "Strengthening",
+      "needsAttention": "Restoration Needed"
     },
     "goal": {
       "title": "Your Goal:",
-      "connection": "Your gut microbiome plays a crucial role in {{goal}}. Based on your responses, there are clear opportunities to optimize your gut health."
+      "connection": "Your body's stewardship plays a crucial role in {{goal}}. Based on your responses, Manna's framework can support your specific path to restoration."
     },
     "unlock": {
-      "title": "Unlock Your Full Report",
-      "subtitle": "Choose the plan that fits your goals",
+      "title": "Unlock Your Full Path",
+      "subtitle": "Choose the path that fits your journey",
       "totalValue": "Total Value: $30+",
-      "secure": "Secure payment • 30-day guarantee",
-      "getButton": "Get {{plan}} — ${{price}}"
+      "secure": "Secure payment · 30-day guarantee",
+      "getButton": "Receive {{plan}} — ${{price}}"
     },
     "aiAnalysis": {
-      "title": "AI-Personalized Analysis",
-      "snapshot": "Your Microbiome Snapshot",
-      "recommendations": "Key Recommendations",
-      "foodsToAdd": "Foods to Add",
-      "foodsToLimit": "Foods to Limit"
+      "title": "AI-Personalized Stewardship Analysis",
+      "snapshot": "Your Stewardship Snapshot",
+      "recommendations": "Your Path Forward",
+      "foodsToAdd": "Foods to Gather",
+      "foodsToLimit": "Foods to Release"
     },
     "resetProtocol": {
-      "title": "14-Day Reset Protocol",
-      "remove": "Remove for 14 Days",
+      "title": "14-Day Stewardship Reset",
+      "remove": "Release for 14 Days",
       "removeList": "Added sugars, refined carbs (bread, pasta, rice), seed oils (canola, soybean, corn)",
-      "cooking": "Cooking Rules",
+      "cooking": "Cooking Wisdom",
       "cookingTip": "Never heat olive/avocado oil. Use only coconut oil or ghee for cooking.",
-      "focus": "Focus On",
-      "focusList": "Non-starchy veggies, quality proteins, healthy fats, berries, bone broth, fermented foods"
+      "focus": "Gather These",
+      "focusList": "Non-starchy vegetables, quality proteins, healthy fats, berries, bone broth, fermented foods"
     },
     "probiotics": {
       "title": "Probiotic Guide",
@@ -246,31 +360,31 @@
     },
     "fasting": {
       "title": "Lifetime Fasting Protocol",
-      "exclusive": "Complete Plan Exclusive",
-      "twoMeal": "Two-Meal Protocol",
+      "exclusive": "The Inheritance Plan Exclusive",
+      "twoMeal": "Two-Meal Sabbath Rhythm",
       "firstMeal": "First Meal: Morning when hungry",
       "secondMeal": "Second Meal: 6 hours later (final meal)",
       "noEating": "No eating 6 hours before bed",
-      "betweenMeals": "Between meals: No solid food, no sugar/carbs, no snacking. Water only!",
-      "habit": "Once habit (2-3 weeks), maintain results for life!"
+      "betweenMeals": "Between meals: No solid food, no sugar/carbs, no snacking. Water only.",
+      "habit": "Once habit (2-3 weeks), maintain results for life."
     },
     "upsell": {
       "title": "Unlock the Lifetime Fasting Protocol",
-      "description": "Upgrade to Complete for our powerful 2-meal intermittent fasting protocol — the \"set it and forget it\" system for maintaining results forever.",
-      "price": "Just ${{price}} more to upgrade",
+      "description": "Upgrade to The Inheritance for our powerful 2-meal intermittent fasting protocol — the rhythm that aligns with how your body was designed to function.",
+      "price": "Just ${{price}} more to receive",
       "button": "Upgrade Now"
     },
     "upgradeModal": {
-      "title": "Upgrade to Complete",
+      "title": "Upgrade to The Inheritance",
       "subtitle": "Unlock the Lifetime Fasting Protocol",
-      "whatYouGet": "What you'll get:",
-      "feature1": "2-Meal Daily Protocol",
+      "whatYouGet": "What you'll receive:",
+      "feature1": "Two-Meal Daily Rhythm",
       "feature2": "Optimal meal timing guide",
-      "feature3": "Hunger management strategies",
-      "feature4": "Long-term maintenance plan",
+      "feature3": "Hunger and craving wisdom",
+      "feature4": "Long-term cellular maintenance",
       "feature5": "Lifetime access to updates",
       "oneTime": "one-time upgrade",
-      "upgradeButton": "Upgrade Now",
+      "upgradeButton": "Receive The Inheritance",
       "secure": "Secure payment via Square"
     },
     "timeline": {
@@ -288,22 +402,29 @@
         "desc": "Significant visible improvements"
       }
     },
-    "disclaimer": "This report provides educational information and lifestyle guidance. It does not diagnose, treat, cure, or prevent any disease. Consult a healthcare professional before making changes.",
+    "tribeOffer": {
+      "title": "Join the Founding Tribe",
+      "description": "Be the first to receive the Manna Nutritional Bar when it launches. Founders' price locked in for life.",
+      "button": "Gather Me Into the Tribe"
+    },
+    "disclaimer": "This report provides educational information and lifestyle guidance grounded in current science and biblical stewardship principles. It does not diagnose, treat, cure, or prevent any disease. Consult a healthcare professional before making changes.",
     "retake": "Retake Assessment",
     "processing": "Processing...",
-    "generating": "Generating your AI analysis..."
+    "generating": "Generating your stewardship analysis..."
   },
   "goals": {
     "weight": "Weight Management",
     "skin": "Clearer Skin",
     "digestion": "Better Digestion",
     "energy": "More Energy",
-    "mood": "Improved Mood"
+    "mood": "Improved Mood",
+    "brain": "Brain & Memory Support",
+    "longevity": "Longevity & Aging Well"
   },
   "plans": {
-    "starter": "Starter",
-    "standard": "Standard",
-    "premium": "Premium",
-    "complete": "Complete"
+    "starter": "First Provision",
+    "standard": "The Reset",
+    "premium": "The Stewardship",
+    "complete": "The Inheritance"
   }
 }
