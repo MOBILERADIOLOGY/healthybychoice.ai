@@ -1,12 +1,30 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { Cormorant_Garamond, Cormorant_SC, Lora } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import { LanguageProvider } from '@/lib/language-context'
 
-const jakarta = Plus_Jakarta_Sans({ 
+const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  variable: '--font-jakarta',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
+  display: 'swap',
+})
+
+const cormorantSC = Cormorant_SC({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-cormorant-sc',
+  display: 'swap',
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-lora',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
