@@ -2,15 +2,81 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Manna Aesthetic — Sacred Provision Design System */
+
 :root {
-  --font-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
+  /* CSS Variables for fonts (loaded in layout.tsx) */
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-cormorant-sc: 'Cormorant SC', Georgia, serif;
+  --font-lora: 'Lora', Georgia, serif;
+  
+  /* Color tokens for easy reference in CSS */
+  --color-parchment: #F5EEDD;
+  --color-parchment-deep: #EDE3CC;
+  --color-ink: #1F1410;
+  --color-ink-soft: #3D2817;
+  --color-gold: #B8893D;
+  --color-gold-bright: #D4A654;
+  --color-gold-leaf: #C9A961;
 }
 
+/* Base body styling */
 body {
-  font-family: var(--font-jakarta);
+  font-family: var(--font-lora);
+  background-color: var(--color-parchment);
+  color: var(--color-ink);
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle paper texture overlay — adds depth without distraction */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(184, 137, 61, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(107, 31, 31, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grain texture using SVG noise */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+/* Ensure content sits above background textures */
+main, header, footer, section, div {
+  position: relative;
+  z-index: 3;
+}
+
+/* Display headlines — use Cormorant Garamond */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant);
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+/* Default body text */
+p, span, li, a {
+  font-family: var(--font-lora);
 }
 
 @layer utilities {
+  /* Fade-in animation */
   .animate-fade-in {
     animation: fadeIn 0.5s ease-out forwards;
   }
@@ -25,4 +91,146 @@ body {
       transform: translateY(0);
     }
   }
+  
+  /* Slow reveal — for hero sections */
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out forwards;
+  }
+  
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Shimmer — for the gold wrapper visual */
+  .animate-shimmer {
+    background-size: 200% 200%;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+  
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  /* Italic emphasis for sacred terms */
+  .italic-gold {
+    font-family: var(--font-cormorant);
+    font-style: italic;
+    color: var(--color-gold);
+    font-weight: 400;
+  }
+  
+  /* Small caps overline */
+  .overline {
+    font-family: var(--font-cormorant-sc);
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--color-gold);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  /* Wheat divider — decorative element */
+  .wheat-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .wheat-divider::before,
+  .wheat-divider::after {
+    content: '';
+    height: 1px;
+    flex: 1;
+    max-width: 200px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+  
+  /* Scripture text styling */
+  .scripture {
+    font-family: var(--font-cormorant);
+    font-style: italic;
+    color: var(--color-ink-soft);
+  }
+  
+  /* Gold leaf border — for premium elements */
+  .gold-border {
+    border: 1px solid var(--color-gold);
+    box-shadow: 
+      0 0 0 4px var(--color-parchment),
+      0 0 0 5px var(--color-gold-leaf);
+  }
+  
+  /* Manna button styling */
+  .btn-manna {
+    background: var(--color-ink);
+    color: var(--color-parchment);
+    font-family: var(--font-cormorant-sc);
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    padding: 1.1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .btn-manna:hover {
+    background: var(--color-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -5px rgba(184, 137, 61, 0.4);
+  }
+  
+  .btn-manna-outline {
+    background: transparent;
+    color: var(--color-ink);
+    font-family: var(--font-cormorant-sc);
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    padding: 1.05rem 2.45rem;
+    border: 1px solid var(--color-gold);
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  
+  .btn-manna-outline:hover {
+    background: var(--color-gold);
+    color: var(--color-parchment);
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-parchment);
+}
+
+/* Reveal-on-scroll utility (used with JavaScript) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
